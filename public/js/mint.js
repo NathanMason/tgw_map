@@ -92,7 +92,7 @@ var MissionIntelApp = function() {
     (new MissionIntelApp.Session(map.update)).initialize();
 
     // var gui = new MissionIntelApp.GUI(this);
-
+    
     // session.initialize();
 
     /* PUBLIC DECLARATIONS OF THE ABOVE INITIALIZATIONS */
@@ -101,19 +101,21 @@ var MissionIntelApp = function() {
     this.map = map;
 
     /* EVENTS */
-    // document.addEventListener("mouseup", function(e) {
-    //     destroyDraggable();
-    // });
-    //
-    // document.addEventListener("mousemove", function(e) {
-    //     moveDraggable(e);
-    // });
+    document.addEventListener("mouseup", function(e) {
+        destroyDraggable();
+    });
 
-    // get('map-filters-header').onmousedown = function() {
-    //     makeDraggable(get('map-filters-container'));
-    // };
+    document.addEventListener("mousemove", function(e) {
+        moveDraggable(e);
+    });
 
-    // get('map-draw-header').onmousedown = function() {
-    //     makeDraggable(get('map-draw-container'));
-    // };
+    get('map-filters-header').onmousedown = function() {
+        makeDraggable(get('map-filters-container'));
+        //return false;
+    };
+
+    get('map-draw-header').onmousedown = function() {
+        makeDraggable(get('map-draw-container'));
+        //return false;
+    };
 };
