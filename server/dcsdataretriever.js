@@ -1,26 +1,19 @@
-module.exports = function DCSDataRetriever(dataCallback, ) {
+    module.exports = function DCSDataRetriever(dataCallback) {
 
-    var connOpen = true;
-    const ADDRESS = "89.11.174.88";
-    const PORT = 10308;
+        const PORT = 3001;
+        const HOST = "139.99.144.189";
 
-    const net = require('net');
-    let buffer;
+        var dgram = require('dgram');
+        var server = dgram.createSocket('udp4');
+        let buffer;
 
-    function connect() {
-
-        const client = net.createConnection({host: ADDRESS, port: PORT}, () => {
-            let time = new Date();
-            console.log(time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds() + ' :: Connected to DCS server!');
-            connOpen = false;
-            buffer = "";
+        server.on('listening', function () {
+            var address = server.address();
+            console.log('UDP Server listening on ' + address.address + ":" + address.port);
+            let buffer = "";
         });
 
-        client.on('connect', function() {
-            socket.write("TEST PAYLOAD\r\n\r\n");
-        });
-
-        client.on('data', (data) => {
+        server.on('data', (data) => {
             buffer += data;
             while ((i = buffer.indexOf("\n")) >= 0) {
                 let data = JSON.parse(buffer.substring(0, i));
@@ -29,21 +22,10 @@ module.exports = function DCSDataRetriever(dataCallback, ) {
             }
         });
 
-        client.on('close', () => {
-            time = new Date();
-            console.log(time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds() + ' :: Reconnecting....');
-            connOpen = true;
+        server.on('message', function (message, remote) {
+            console.log(remote.address + ':' + remote.port +' - ' + message);
+
         });
 
-        client.on('error', () => {
-            connOpen = true;
-        });
-    }
-
-    setInterval(function(){
-        if (connOpen === true) {
-            connect();
-        }
-    }, 5 * 1000);
-
-};
+        server.bind(PORT, HOST);
+    };
