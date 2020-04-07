@@ -1,0 +1,64 @@
+html, body {
+  color: @ui_text_color;
+  font-family: 'Roboto', sans-serif;
+}
+p, strong {
+  color: @ui_text_color;
+  font-weight: lighter;
+  font-family: 'Roboto', sans-serif;
+}
+
+body, p, a, label, .table td, .table th {
+  font-size: 15px !important;
+  font-weight: lighter;
+}
+
+pre {
+    font-size: 15px !important;
+    font-family: 'Roboto', sans-serif;
+    color: @ui_text_color;
+    font-weight: lighter;
+}
+
+.stats-text {
+  font-weight: bold;
+  font-size: 70px;
+}
+a {
+  color: @ui_colors__primary;
+
+   &:hover {
+     text-decoration: none !important;
+     color: @ui_colors__primary-dark
+   }
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: lighter;
+  color: @ui_text_dark;
+
+}
+
+ h2,h3,h4,h5,h6 {
+  font-size: 20px;
+  font-weight: lighter;
+  color: @ui_text_dark;
+}
+
+small {
+  font-size: 14px !important;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: @ui_light_text_color !important;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: @ui_light_text_color !important;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: @ui_light_text_color !important;
+}
