@@ -21,7 +21,6 @@ _.set(serverObject, 'units', []);
 _.set(serverObject, 'requestArray', []);
 
 var wsConnections = [];
-
 var websocket = require('nodejs-websocket');
 var server = websocket.createServer(function (conn) {
 
@@ -146,7 +145,7 @@ var sendCMD = 'SENDTHISCOMMAND';
 function DCSDataRetriever(dataCallback) {
 
     const PORT = 3001;
-    const ADDRESS = "127.0.0.1";
+    const ADDRESS = "139.99.144.189";
     var connOpen = true;
 
     const net = require('net');
@@ -165,6 +164,7 @@ function DCSDataRetriever(dataCallback) {
         });
 
         client.on('connect', function() {
+            console.log('connect');
             client.write("INIT"+"\n");
         });
 
@@ -179,14 +179,16 @@ function DCSDataRetriever(dataCallback) {
             }
         });
 
-        client.on('close', () => {
+        client.on('close', (r) => {
+            console.log(r);
             time = new Date();
             console.log(time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds() + ' :: Reconnecting....');
             connOpen = true;
         });
 
-        client.on('error', () => {
+        client.on('error', (r) => {
             console.log('error!');
+            console.log(r);
             connOpen = true;
         });
     }
@@ -200,4 +202,3 @@ function DCSDataRetriever(dataCallback) {
 };
 
 DCSDataRetriever(receiveDCSData);
-//dcsdr(receiveDCSData);
