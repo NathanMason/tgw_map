@@ -1,2 +1,5 @@
-node_modules
-bower_components
+/nbproject/
+/node_modules/
+/test/
+/test-missions/
+/public/public.todo

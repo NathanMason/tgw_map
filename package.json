@@ -1,24 +1,27 @@
 {
-  "name": "Red-Iberia-Node",
-  "version": "1.0.0",
-  "description": "",
+  "name": "dynamic-dcs",
+  "version": "0.0.1",
+  "description": "dynamic dcs client",
   "main": "index.js",
-  "scripts": {
-    "postinstall": "./node_modules/bower/bin/bower install"
-  },
-  "license": "ISC",
+  "author": [
+    "birgersp",
+    "jkhoel",
+    "Andrew Finegan <andrew.finegan@gmail.com>"
+  ],
+  "files": [
+    "dist"
+  ],
+  "private": true,
+  "license": "BSD",
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "bootstrap": "^4.3.1",
-    "bower": "^1.8.8",
-    "consolidate": "^0.15.1",
-    "cookie-parser": "^1.4.3",
-    "cors": "^2.8.4",
-    "dotenv": "^6.2.0",
-    "express": "^4.16.3",
-    "express-session": "^1.17.0",
-    "morgan": "^1.9.0",
-    "socket.io": "^2.3.0",
-    "swig": "^1.4.2"
+    "express": "^4.15.2",
+    "geojson": "^0.4.1",
+    "grunt": "^1.0.1",
+    "lodash": "^4.17.4",
+    "milsymbol": "^1.1.0",
+    "nodejs-websocket": "^1.7.1"
+  },
+  "scripts": {
+    "start": "node main.js"
   }
 }
