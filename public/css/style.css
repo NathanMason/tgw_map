@@ -642,3 +642,9 @@ body {
     background: #1a1a1a;
 
     }*/
+.mint-logo {
+    width: 10em !important;
+}
+.mint-logo small {
+    font-size: 12px;
+}
