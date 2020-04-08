@@ -18,6 +18,15 @@ let SIDC = {
 		modifier1: '-',
 		modifier2: '-'
 	},
+	'AV8BNA' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'A',
+		status: '-',
+		functionID: 'MFF--',
+		modifier1: '-',
+		modifier2: '-'
+	},
 	'A-10A' : {
 		codingScheme : 'S',
 		affiliation: 'U',
@@ -171,7 +180,16 @@ let SIDC = {
 		modifier1: '-',
 		modifier2: '-'
 	},
-	'F-15C' : {
+	'F-14A' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'A',
+		status: '-',
+		functionID: 'MFF--',
+		modifier1: '-',
+		modifier2: '-'
+	},
+	'F-14B' : {
 		codingScheme : 'S',
 		affiliation: 'U',
 		battleDimension: 'A',
@@ -208,6 +226,15 @@ let SIDC = {
 		modifier2: '-'
 	},
 	'F-16C bl.50' : {
+	codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'A',
+		status: '-',
+		functionID: 'MFF--',
+		modifier1: '-',
+		modifier2: '-'
+	},
+	'F-16C_50' : {
 	codingScheme : 'S',
 		affiliation: 'U',
 		battleDimension: 'A',
@@ -261,7 +288,43 @@ let SIDC = {
 		modifier1: '-',
 		modifier2: '-'
 	},
+	'FA-18C_hornet' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'A',
+		status: '-',
+		functionID: 'MFF--',
+		modifier1: '-',
+		modifier2: '-'
+	},
 	'FW-190D9' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'A',
+		status: '-',
+		functionID: 'MFF--',
+		modifier1: '-',
+		modifier2: '-'
+	},
+	'FW-190A8' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'A',
+		status: '-',
+		functionID: 'MFF--',
+		modifier1: '-',
+		modifier2: '-'
+	},
+	'SpitfireLFMkIX' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'A',
+		status: '-',
+		functionID: 'MFF--',
+		modifier1: '-',
+		modifier2: '-'
+	},
+	'SpitfireLFMkIXCW' : {
 		codingScheme : 'S',
 		affiliation: 'U',
 		battleDimension: 'A',
@@ -306,6 +369,15 @@ let SIDC = {
 		modifier1: '-',
 		modifier2: '-'
 	},
+	'KC135MPRS' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'A',
+		status: '-',
+		functionID: 'MFF--',
+		modifier1: '-',
+		modifier2: '-'
+	},
 	'L-39C' : {
 		codingScheme : 'S',
 		affiliation: 'U',
@@ -334,6 +406,15 @@ let SIDC = {
 		modifier2: '-'
 	},
 	'MiG-15bis' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'A',
+		status: '-',
+		functionID: 'MFF--',
+		modifier1: '-',
+		modifier2: '-'
+	},
+	'MiG-19P' : {
 		codingScheme : 'S',
 		affiliation: 'U',
 		battleDimension: 'A',
@@ -441,6 +522,15 @@ let SIDC = {
 		modifier1: '-',
 		modifier2: '-'
 	},
+	'P-51D-30-NA' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'A',
+		status: '-',
+		functionID: 'MFF--',
+		modifier1: '-',
+		modifier2: '-'
+	},
 	'RQ-1A Predator' : {
 	codingScheme : 'S',
 		affiliation: 'U',
@@ -540,6 +630,15 @@ let SIDC = {
 		modifier1: '-',
 		modifier2: '-'
 	},
+	'JF-17' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'A',
+		status: '-',
+		functionID: 'MFF--',
+		modifier1: '-',
+		modifier2: '-'
+	},
 	'Su-33' : {
 		codingScheme : 'S',
 		affiliation: 'U',
@@ -622,6 +721,24 @@ let SIDC = {
 		modifier2: '-'
 	},
 	'Yak-40' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'A',
+		status: '-',
+		functionID: 'MFF--',
+		modifier1: '-',
+		modifier2: '-'
+	},
+	'Yak-52' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'A',
+		status: '-',
+		functionID: 'MFF--',
+		modifier1: '-',
+		modifier2: '-'
+	},
+	'I-16' : {
 		codingScheme : 'S',
 		affiliation: 'U',
 		battleDimension: 'A',
@@ -747,7 +864,35 @@ let SIDC = {
 		functionID: 'MH---',
 		modifier1: '-',
 		modifier2: '-'
-	},	'SH-60B' : {
+	},
+	'SA342L' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'A',
+		status: '-',
+		functionID: 'MH---',
+		modifier1: '-',
+		modifier2: '-'
+	},
+	'SA342Minigun' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'A',
+		status: '-',
+		functionID: 'MH---',
+		modifier1: '-',
+		modifier2: '-'
+	},
+	'SA342Mistral' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'A',
+		status: '-',
+		functionID: 'MH---',
+		modifier1: '-',
+		modifier2: '-'
+	},
+	'SH-60B' : {
 		codingScheme : 'S',
 		affiliation: 'U',
 		battleDimension: 'A',
@@ -1948,7 +2093,82 @@ let SIDC = {
 		functionID: 'UU---',
 		modifier1: '-',
 		modifier2: '-'
-	}
+	},
+	// Sea
+	'Stennis' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'G',
+		status: '-',
+		functionID: 'UU---',
+		modifier1: '-',
+		modifier2: '-'
+	},
+	'ELNYA' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'G',
+		status: '-',
+		functionID: 'UU---',
+		modifier1: '-',
+		modifier2: '-'
+	},
+	'MOSCOW' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'G',
+		status: '-',
+		functionID: 'UU---',
+		modifier1: '-',
+		modifier2: '-'
+	},
+	// FARPS
+	'FARP' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'G',
+		status: '-',
+		functionID: 'UU---',
+		modifier1: '-',
+		modifier2: '-'
+	},
+	'FARP Ammo Dump Coating' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'G',
+		status: '-',
+		functionID: 'UU---',
+		modifier1: '-',
+		modifier2: '-'
+	},
+	'ammo_cargo' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'G',
+		status: '-',
+		functionID: 'UU---',
+		modifier1: '-',
+		modifier2: '-'
+	},
+	'container_cargo' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'G',
+		status: '-',
+		functionID: 'UU---',
+		modifier1: '-',
+		modifier2: '-'
+	},
+	'barrels_cargo' : {
+		codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'G',
+		status: '-',
+		functionID: 'UU---',
+		modifier1: '-',
+		modifier2: '-'
+	},
+	
 };
 
 

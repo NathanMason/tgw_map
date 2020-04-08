@@ -78,8 +78,8 @@ function toGeoJSON(dcsData) {
     let featureCollection = [];
 
     dcsData.units.forEach(function (unit) {
-		console.log("inside dcsData.units")
-		console.log(unit)
+		// console.log("inside dcsData.units")
+		// console.log(unit)
         serverObject.unitParse(unit);
     });
 
