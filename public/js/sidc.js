@@ -2143,7 +2143,7 @@ let SIDC = {
 	'Stennis' : {
 		codingScheme : 'S',
 		affiliation: 'U',
-		battleDimension: 'G',
+		battleDimension: 'S',
 		status: '-',
 		functionID: 'CLCV--',
 		modifier1: '-',
@@ -2152,7 +2152,7 @@ let SIDC = {
 	'Higgins_boat' : {
 		codingScheme : 'S',
 		affiliation: 'U',
-		battleDimension: 'G',
+		battleDimension: 'S',
 		status: '-',
 		functionID: 'CP---',
 		modifier1: '-',
@@ -2161,7 +2161,7 @@ let SIDC = {
 	'LHA_Tarawa' : {
 		codingScheme : 'S',
 		affiliation: 'U',
-		battleDimension: 'G',
+		battleDimension: 'S',
 		status: '-',
 		functionID: 'CALA--',
 		modifier1: '-',
@@ -2170,7 +2170,7 @@ let SIDC = {
 	'LST_Mk2' : {
 		codingScheme : 'S',
 		affiliation: 'U',
-		battleDimension: 'G',
+		battleDimension: 'S',
 		status: '-',
 		functionID: 'CALC---',
 		modifier1: '-',
@@ -2179,7 +2179,7 @@ let SIDC = {
 	'PERRY' : {
 		codingScheme : 'S',
 		affiliation: 'U',
-		battleDimension: 'G',
+		battleDimension: 'S',
 		status: '-',
 		functionID: 'CLDD---',
 		modifier1: '-',
@@ -2188,7 +2188,7 @@ let SIDC = {
 	'speedboat' : {
 		codingScheme : 'S',
 		affiliation: 'U',
-		battleDimension: 'G',
+		battleDimension: 'S',
 		status: '-',
 		functionID: 'CP---',
 		modifier1: '-',
@@ -2197,7 +2197,7 @@ let SIDC = {
 	'TICONDEROG' : {
 		codingScheme : 'S',
 		affiliation: 'U',
-		battleDimension: 'G',
+		battleDimension: 'S',
 		status: '-',
 		functionID: 'CLCC--',
 		modifier1: '-',
@@ -2206,7 +2206,7 @@ let SIDC = {
 	'USS_Samuel_Chase' : {
 		codingScheme : 'S',
 		affiliation: 'U',
-		battleDimension: 'G',
+		battleDimension: 'S',
 		status: '-',
 		functionID: 'CALS--',
 		modifier1: '-',
@@ -2215,7 +2215,7 @@ let SIDC = {
 	'VINSON' : {
 		codingScheme : 'S',
 		affiliation: 'U',
-		battleDimension: 'G',
+		battleDimension: 'S',
 		status: '-',
 		functionID: 'CLCV--',
 		modifier1: '-',
@@ -2224,7 +2224,7 @@ let SIDC = {
 	'ALBATROS' : {
 		codingScheme : 'S',
 		affiliation: 'U',
-		battleDimension: 'G',
+		battleDimension: 'S',
 		status: '-',
 		functionID: 'UU---',
 		modifier1: '-',
@@ -2233,7 +2233,7 @@ let SIDC = {
 	'Dry-cargo ship-1' : {
 		codingScheme : 'S',
 		affiliation: 'U',
-		battleDimension: 'G',
+		battleDimension: 'S',
 		status: '-',
 		functionID: 'XMC---',
 		modifier1: '-',
@@ -2242,7 +2242,7 @@ let SIDC = {
 	'Dry-cargo ship-2' : {
 		codingScheme : 'S',
 		affiliation: 'U',
-		battleDimension: 'G',
+		battleDimension: 'S',
 		status: '-',
 		functionID: 'XMC---',
 		modifier1: '-',
@@ -2251,7 +2251,7 @@ let SIDC = {
 	'ELNYA' : {
 		codingScheme : 'S',
 		affiliation: 'U',
-		battleDimension: 'G',
+		battleDimension: 'S',
 		status: '-',
 		functionID: 'XMO---',
 		modifier1: '-',
@@ -2260,7 +2260,7 @@ let SIDC = {
 	'KILO' : {
 		codingScheme : 'S',
 		affiliation: 'U',
-		battleDimension: 'G',
+		battleDimension: 'U',
 		status: '-',
 		functionID: 'SN----',
 		modifier1: '-',
@@ -2269,7 +2269,7 @@ let SIDC = {
 	'KUZNECOW' : {
 		codingScheme : 'S',
 		affiliation: 'U',
-		battleDimension: 'G',
+		battleDimension: 'S',
 		status: '-',
 		functionID: 'CLCV--',
 		modifier1: '-',
@@ -2278,7 +2278,7 @@ let SIDC = {
 	'MOLNIYA' : {
 		codingScheme : 'S',
 		affiliation: 'U',
-		battleDimension: 'G',
+		battleDimension: 'S',
 		status: '-',
 		functionID: 'CLFF--',
 		modifier1: '-',
@@ -2287,7 +2287,7 @@ let SIDC = {
 	'MOSCOW' : {
 		codingScheme : 'S',
 		affiliation: 'U',
-		battleDimension: 'G',
+		battleDimension: 'S',
 		status: '-',
 		functionID: 'CLCC--',
 		modifier1: '-',
@@ -2296,7 +2296,7 @@ let SIDC = {
 	'NEUSTRASH' : {
 		codingScheme : 'S',
 		affiliation: 'U',
-		battleDimension: 'G',
+		battleDimension: 'S',
 		status: '-',
 		functionID: 'CLDD--',
 		modifier1: '-',
@@ -2305,7 +2305,7 @@ let SIDC = {
 	'PIOTR' : {
 		codingScheme : 'S',
 		affiliation: 'U',
-		battleDimension: 'G',
+		battleDimension: 'S',
 		status: '-',
 		functionID: 'CLCC--',
 		modifier1: '-',
@@ -2314,7 +2314,7 @@ let SIDC = {
 	'REZKY' : {
 		codingScheme : 'S',
 		affiliation: 'U',
-		battleDimension: 'G',
+		battleDimension: 'S',
 		status: '-',
 		functionID: 'CLDD--',
 		modifier1: '-',
@@ -2323,7 +2323,7 @@ let SIDC = {
 	'SOM' : {
 		codingScheme : 'S',
 		affiliation: 'U',
-		battleDimension: 'G',
+		battleDimension: 'U',
 		status: '-',
 		functionID: 'UU---',
 		modifier1: '-',
@@ -2332,7 +2332,7 @@ let SIDC = {
 	'ZWEZDNY' : {
 		codingScheme : 'S',
 		affiliation: 'U',
-		battleDimension: 'G',
+		battleDimension: 'S',
 		status: '-',
 		functionID: 'SN---',
 		modifier1: '-',

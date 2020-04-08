@@ -27,7 +27,9 @@
     "nodejs-websocket": "^1.7.1"
   },
   "nodemonConfig": {
-    "ignore": ["api/db/*.json"]
+    "ignore": [
+      "api/db/*.json"
+    ]
   },
   "scripts": {
     "start": "node main.js"
