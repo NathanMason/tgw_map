@@ -1,10 +1,11 @@
-﻿var express = require('express');
+﻿// load in our libaries.
+var express = require('express');
 var _ = require('lodash');
 var GeoJSON = require('geojson');
 
 var app = express();
 app.use('/', express.static(__dirname + '/public'));
-app.listen(8080);
+app.listen(8080); // start the webserver on 8080
 
 app.use('/scripts', express.static(__dirname + '/node_modules'));
 
@@ -39,7 +40,7 @@ var server = websocket.createServer(function (conn) {
 
 
 console.log(':: SERVER IS RUNNING!');
-
+// this stores the objects on THIS server. These are the items that get updated below as far as i can see with togeojson.
 _.set(serverObject, 'unitParse', function (unit) {
     if (_.get(unit, 'action') == 'C') {
         serverObject.units[unit.unitID] = {
@@ -64,6 +65,7 @@ _.set(serverObject, 'unitParse', function (unit) {
     return true;
 });
 
+// convert our datagram to geojson format.
 function toGeoJSON(dcsData) {
 
      //console.log(dcsData);
@@ -206,7 +208,7 @@ function DCSDataRetriever(dataCallback) {
         if (connOpen === true) {
             connect();
         }
-    }, 1 * 1000);
+    }, 1 * 1000); // should be once a second.
 
 };
 

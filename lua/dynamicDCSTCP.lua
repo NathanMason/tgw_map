@@ -1,37 +1,44 @@
 do
-    --
-    local PORT = 3001
-    local DATA_TIMEOUT_SEC = 1
-
+    -- lets start commenting some of this shit.
+    local PORT = 3001 -- our port
+    local DATA_TIMEOUT_SEC = 1 -- data timeout not that it seems to do much
+	-- initalise and basically make our socket shit really this mint.require isn't needed 
     package.path = package.path..";.\\LuaSocket\\?.lua"
     package.cpath = package.cpath..";.\\LuaSocket\\?.dll"
 
-    require = mint.require
-    local socket = require("socket")
-    local JSON = loadfile("Scripts\\JSON.lua")()
-    require = nil
-
+    require = mint.require -- we actually don't need this because of how we run our server 
+    local socket = require("socket") -- load in socket
+    local JSON = loadfile("Scripts\\JSON.lua")() -- load in json.
+    require = nil -- really need to delete this i don't like it unseting shit on me will fix later
+	
+	-- dumps out a log file into dcs.log with whatever message and time, though why it's not using io... 
     local function log(msg)
         env.info("DynamicDCS (t=" .. timer.getTime() .. "): " .. msg)
     end
 
-    local cacheDB = {}
+    local cacheDB = {} -- our cachedb, this stores the data below, so if we loose a connection we need to reset this 
+	-- this builds our packet.
     local function getDataMessage()
-        local payload = {}
-        payload.units = {}
-        local checkDead = {}
-        local function addUnit(unit, unitID, coalition, lat, lon, action)
-            local curUnit = {
+		local payload = {} -- This is our actual 'packet' itself the data message
+        payload.units = {} -- all the units in the packet
+        local checkDead = {} -- creates the dead table
+		-- basically runs a function to add a unit into the cache or update it.
+		local function addUnit(unit, unitID, coalition, lat, lon, action)
+            -- stores dcs data.
+			local curUnit = {
                 action = action,
                 unitID = unitID
             }
+			-- far as i can work out here, action c is create action u is update.
             if action == "C" or action == "U" then
-                cacheDB[unitID] = {}
+                -- make a entry or find the entry in cachedb with the unit id. then build it
+				cacheDB[unitID] = {}
                 cacheDB[unitID].lat = lat
                 cacheDB[unitID].lon = lon
                 curUnit.lat = lat
                 curUnit.lon = lon
-                if action == "C" then
+                -- if we create shit then we get the types and the names and store it 
+				if action == "C" then
                     curUnit.type = unit:getTypeName()
                     curUnit.coalition = coalition
                     local PlayerName = unit:getPlayerName()
@@ -42,9 +49,11 @@ do
                     end
                 end
             end
+			-- insert the unit into the payload table..
             table.insert(payload.units, curUnit)
         end
-
+		
+		-- entire group run through
         local function addGroups(groups, coalition)
             for groupIndex = 1, #groups do
                 local group = groups[groupIndex]
@@ -69,7 +78,7 @@ do
                 end
             end
         end
-
+		
         local redGroups = coalition.getGroups(coalition.side.RED)
         addGroups(redGroups, 1)
         local blueGroups = coalition.getGroups(coalition.side.BLUE)
@@ -83,27 +92,29 @@ do
             end
             unitCnt = unitCnt + 1
         end
-        payload.unitCount = unitCnt
-        return payload
+        -- store the unit count
+		payload.unitCount = unitCnt
+        return payload -- return the payload.
     end
 
     log("Starting DCS unit data server")
-
-    local tcp = socket.tcp()
-    local bound, error = tcp:bind('*', PORT)
+	
+    local tcp = socket.tcp() -- create a tcp socket.
+    local bound, error = tcp:bind('*', PORT) -- bind the tcp socket to the port but all addresses.
     if not bound then
         log("Could not bind: " .. error)
         return
     end
-    log("Port " .. PORT .. " bound")
-
-    local serverStarted, error = tcp:listen(1)
+    log("Port " .. PORT .. " bound") -- dump out a message 
+	-- start the server by opening listen if it returns an error spit it out else well just say.
+    local serverStarted, error = tcp:listen(1) 
     if not serverStarted then
         log("Could not start server: " .. error)
         return
     end
     log("Server started")
 
+	-- starts a client, 
     local client
     local function step()
 
@@ -117,12 +128,14 @@ do
             end
         end
 
+ 
         if client then
             local msg = JSON:encode(getDataMessage()).."\n"
             --env.info(msg)
             local bytes, status, lastbyte = client:send(msg)
             if not bytes then
                 log("Connection lost")
+				cacheDB = {} -- clean out the cache we'll need to resend it because chances are the servers reset.
                 client = nil
             end
         end
