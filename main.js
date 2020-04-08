@@ -1,13 +1,14 @@
-﻿// load in our libaries.
 var express = require('express');
 var _ = require('lodash');
 var GeoJSON = require('geojson');
-
 var app = express();
-app.use('/', express.static(__dirname + '/public'));
-app.listen(8080); // start the webserver on 8080
 
+//directories
+app.use('/', express.static(__dirname + '/public'));
 app.use('/scripts', express.static(__dirname + '/node_modules'));
+
+//start the webserver
+app.listen(8080);
 
 MissionIntelApp = {};
 require('./public/js/comm.js');
@@ -21,8 +22,8 @@ var serverObject = {};
 _.set(serverObject, 'units', []);
 _.set(serverObject, 'requestArray', []);
 
+// socket
 var wsConnections = [];
-
 var websocket = require('nodejs-websocket');
 var server = websocket.createServer(function (conn) {
 
@@ -31,27 +32,31 @@ var server = websocket.createServer(function (conn) {
     wsConnections.push(conn);
     conn.on("close", function (code, reason) {
         wsConnections.splice(wsConnections.indexOf(conn), 1);
-
         time = new Date();
         console.log(time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds() + ' :: -> Client disconnected');
     });
 });
 
-
-
-console.log(':: SERVER IS RUNNING!');
-// this stores the objects on THIS server. These are the items that get updated below as far as i can see with togeojson.
+// this underscore function loops through all the data received frokm DCS and parses into a json object.
+// the object produced is
+//  {
+//         unitID: 75,
+//         type: 'BTR-80',
+//         coalition: 1,
+//         lat: 41.827466027798,
+//         lon: 41.812401984863,
+//         playername: '' this is empty but we should utalize it along with the player stats.
+//  },
 _.set(serverObject, 'unitParse', function (unit) {
     if (_.get(unit, 'action') == 'C') {
         serverObject.units[unit.unitID] = {
-            unitID: _.get(unit, 'unitID'),
-            type: _.get(unit, 'type'),
-            coalition: _.get(unit, 'coalition'),
-            lat: _.get(unit, 'lat'),
-            lon: _.get(unit, 'lon'),
-            playername: _.get(unit, 'playername', '')
+                unitID: _.get(unit, 'unitID'),
+                type: _.get(unit, 'type'),
+                coalition: _.get(unit, 'coalition'),
+                lat: _.get(unit, 'lat'),
+                lon: _.get(unit, 'lon'),
+                playername: _.get(unit, 'playername', '')
         };
-
     }
     if (_.get(unit, 'action') == 'U') {
         if (_.get(serverObject.units[unit.unitID], 'lat', null) !== null && _.get(serverObject.units[unit.unitID], 'lon', null) !== null) {
@@ -65,12 +70,10 @@ _.set(serverObject, 'unitParse', function (unit) {
     return true;
 });
 
-// convert our datagram to geojson format.
+// convert our datag to geojson format. and we need to send this to the map.js file
 function toGeoJSON(dcsData) {
 
-     //console.log(dcsData);
      console.log("############################");
-     //return;
 
     let featureCollection = [];
 
@@ -80,7 +83,6 @@ function toGeoJSON(dcsData) {
         serverObject.unitParse(unit);
     });
 
-    console.log('DCS unit count: '+dcsData.unitCount+' serverObj units: '+serverObject.units.length);
     serverObject.units.forEach(function (unit) {
 		//console.log("inside server object")
         // DEFAULT MARKER
@@ -135,7 +137,7 @@ function toGeoJSON(dcsData) {
             type: _.get(unit, 'type'),
             name: _.get(unit, 'playername', '')
         });
-		
+
     });
 
     let geoJSONData = GeoJSON.parse(featureCollection, {Point: ['lat', 'lon']});
@@ -150,17 +152,12 @@ function receiveDCSData(dcsData) {
 }
 
 server.listen(8081);
-//var dcsdr = require('./server/dcsdataretriever.js');
-//dcsdr(receiveDCSData);
-var sendCMD = 'SENDTHISCOMMAND';
+
 function DCSDataRetriever(dataCallback) {
 
     const PORT = 3001;
     const ADDRESS = "127.0.0.1";
     var connOpen = true;
-    //const ADDRESS = "89.11.174.88";
-    //const ADDRESS = "51.175.54.160";
-    //const PORT = 10308;
 
     const net = require('net');
     let buffer;
@@ -208,9 +205,9 @@ function DCSDataRetriever(dataCallback) {
         if (connOpen === true) {
             connect();
         }
-    }, 1 * 1000); // should be once a second.
+    }, 1 * 1000);
 
 };
 
+// start the process to retrieve DCS packets
 DCSDataRetriever(receiveDCSData);
-//dcsdr(receiveDCSData);
