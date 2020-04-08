@@ -1,25 +1,33 @@
 {
-  "name": "dynamic-dcs",
-  "version": "0.0.1",
-  "description": "dynamic dcs client",
-  "main": "index.js",
+  "name": "RI",
+  "version": "0.0.5",
+  "description": "Main webserver for Red Iberia Forked from Dynamic DCS",
+  "main": "main.js",
   "author": [
     "birgersp",
     "jkhoel",
-    "Andrew Finegan <andrew.finegan@gmail.com>"
-  ],
-  "files": [
-    "dist"
+    "Andrew Finegan <andrew.finegan@gmail.com>",
+    "Robert Graham",
+    "Boozer"
   ],
   "private": true,
   "license": "BSD",
   "dependencies": {
-    "express": "^4.15.2",
+    "body-parser": "^1.19.0",
+    "ejs": "^2.7.4",
+    "express": "^4.17.1",
+    "jquery.json-viewer": "^1.4.0",
+    "node-json-db": "^0.7.3",
+    "process": "^0.11.9",
+    "request": "^2.88.2",
     "geojson": "^0.4.1",
     "grunt": "^1.0.1",
     "lodash": "^4.17.4",
     "milsymbol": "^1.1.0",
     "nodejs-websocket": "^1.7.1"
+  },
+  "nodemonConfig": {
+    "ignore": ["api/db/*.json"]
   },
   "scripts": {
     "start": "node main.js"
