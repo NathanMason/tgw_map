@@ -109,6 +109,7 @@ _.set(serverObject, 'unitParse', function (unit) {
         }
     }
     if (_.get(unit, 'action') == 'D') {
+
         delete serverObject.units[unit.unitID];
     }
     return true;
