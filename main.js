@@ -137,13 +137,18 @@ function toGeoJSON(dcsData) {
         let lookup = SIDCtable[unit.type];
         // Check if this unit's type is defined in the table
         if (!lookup)
-            return;
-
-        for (var atr in lookup) {
-            if (lookup[atr])
-                _sidcObject[atr] = lookup[atr];
-        }
-
+		{
+			console.log("unit type:" + unit.type + "is missing from the SIDCtable! "); // we dump a console log and then set into the else, this should basically make a default item unless i'm mistaken.
+			// plus it will give us a log of items we need to deal with over time. 
+			//return;
+		}
+		else
+		{
+			for (var atr in lookup) {
+				if (lookup[atr])
+					_sidcObject[atr] = lookup[atr];
+			}
+		}
         // set showsides == false if we don't want this.
 		if (showsides == true)
 		{
