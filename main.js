@@ -1,3 +1,14 @@
+// our constants, these never change unless done by the user
+const PORT = 3001; // our port we listen to dcs on.
+const ADDRESS = "127.0.0.1"; // our address
+const net = require('net'); // we need net
+const webport = 8080; // our webport
+const serverlisten = 8081; // our pass through for the webserver
+const showsides = true; // do we show sides.
+const onesecond = 1000; // how many milliseconds to 1 second.
+const refreshrate = 3; // our server refresh rate.
+
+
 var express = require('express');
 var _ = require('lodash');
 var GeoJSON = require('geojson');
@@ -8,7 +19,7 @@ app.use('/', express.static(__dirname + '/public'));
 app.use('/scripts', express.static(__dirname + '/node_modules'));
 
 //start the webserver
-app.listen(8080);
+app.listen(webport);
 
 MissionIntelApp = {};
 require('./public/js/comm.js');
@@ -73,7 +84,7 @@ _.set(serverObject, 'unitParse', function (unit) {
 // convert our datag to geojson format. and we need to send this to the map.js file
 function toGeoJSON(dcsData) {
 
-     console.log("############################");
+    // console.log("############################");
 
     let featureCollection = [];
 
@@ -109,16 +120,18 @@ function toGeoJSON(dcsData) {
                 _sidcObject[atr] = lookup[atr];
         }
 
-        // OPTION: [COMMENT TO TURN OFF] SHOW AFFILIATION
-        if (unit.coalition == 1) {
-            markerColor = 'rgb(255, 88, 88)';
-            _sidcObject["affiliation"] = 'H';
-        }
-        if (unit.coalition == 2) {
-            markerColor = 'rgb(128, 224, 255)';
-            _sidcObject["affiliation"] = 'F';
-        }
-
+        // set showsides == false if we don't want this.
+		if (showsides == true)
+		{
+			if (unit.coalition == 1) {
+				markerColor = 'rgb(255, 88, 88)';
+				_sidcObject["affiliation"] = 'H';
+			}
+			if (unit.coalition == 2) {
+				markerColor = 'rgb(128, 224, 255)';
+				_sidcObject["affiliation"] = 'F';
+			}
+		}
         // Generate final SIDC string
         let _sidc = "";
         for (var atr in _sidcObject) {
@@ -151,15 +164,11 @@ function receiveDCSData(dcsData) {
         wsConnections[connection].sendText(JSON.stringify(geoJSONData));
 }
 
-server.listen(8081);
+server.listen(serverlisten);
 
 function DCSDataRetriever(dataCallback) {
 
-    const PORT = 3001;
-    const ADDRESS = "127.0.0.1";
     var connOpen = true;
-
-    const net = require('net');
     let buffer;
 
     function connect() {
@@ -192,6 +201,8 @@ function DCSDataRetriever(dataCallback) {
         client.on('close', () => {
             time = new Date();
             console.log(time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds() + ' :: Reconnecting....');
+			// ok we need a way to reset the data because DCS expects it to be clean if a connection is lost! so set the SERVER object list to 0 ie clean it out and wait.
+			serverObject.length = 0
             connOpen = true;
         });
 
@@ -205,7 +216,7 @@ function DCSDataRetriever(dataCallback) {
         if (connOpen === true) {
             connect();
         }
-    }, 1 * 3000);
+    }, refreshrate * onesecond);
 
 };
 
