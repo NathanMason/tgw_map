@@ -648,3 +648,13 @@ body {
 .mint-logo small {
     font-size: 12px;
 }
+.olLayerDiv svg {
+    pointer-events: none;
+}
+
+.olLayerDiv svg * {
+    pointer-events: auto;
+}
+.ol-overlaycontainer-stopevent, .ol-overlaycontainer, .ol-unselectable.ol-layers {
+    pointer-events: none;
+}

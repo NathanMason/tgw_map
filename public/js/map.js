@@ -41,12 +41,7 @@ MissionIntelApp.Map = function (app) {
         let ratio = window.devicePixelRatio || 1;
         let collection = [];
 
-        // Console.log time of last marker update
         let  time = new Date();
-        console.log('-> MARKER UPDATE: ' +
-                ("0" + time.getHours()).slice(-2) + ":" +
-                ("0" + time.getMinutes()).slice(-2) + ":" +
-                ("0" + time.getSeconds()).slice(-2));
 
         // Convert source into an OL3 source
         let s = new ol.source.Vector({
@@ -83,16 +78,18 @@ MissionIntelApp.Map = function (app) {
             collection.push(f);
         });
 
-        console.log(collection);
+
         // Remove all old features from the layer group
         _group.getLayers().clear(true);
+        console.log(collection);
 
         // Add updated features to layer TODO: THE BELOW FUNCTION DOES NOT WORK... THE COLLECTION IS JUST PASSED TO THE streamLayer (SEE BELOW)
         [].forEach.call(collection, function (obj) {
             let exists;
-            console.log(obj);
+
             // If there is a layer with an ID equal to SOURCE then this layer exists and we will add the feature to this layer
             _group.getLayers().forEach(function (layer) {
+                console.log('exiats');
                 if (layer.getProperties().id == obj.getProperties().source) {
                     exists = true;
                     layer.getSource().addFeature(obj);
@@ -101,6 +98,7 @@ MissionIntelApp.Map = function (app) {
 
             // .. if there is not - then we have to make it, add a source and then add the feature here
             if (!exists) {
+                console.log('not exists');
                 let grp = _group.getLayers();
                 grp.push(new ol.layer.Vector({
                     id: obj.getProperties().source,
@@ -119,9 +117,6 @@ MissionIntelApp.Map = function (app) {
     this.update = function (source) {
 
         var e = JSON.parse(localStorage.getItem('dcsData'));
-        console.log('OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO');
-        console.log(e);
-        console.log('OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO');
 
         updateMap(e);
     };
@@ -229,15 +224,12 @@ MissionIntelApp.Map = function (app) {
                     }
 
                     if (f.getGeometry().getType() == 'Polygon') {
-                        //console.log(f.getGeometry().getCoordinates());
                         var style = new ol.style.Style({
                             stroke: new ol.style.Stroke({
-                                //color: 'blue',
                                 color: f.getProperties().color,
                                 width: 1
                             }),
                             fill: new ol.style.Fill({
-                                //color: 'rgba(0, 0, 255, 0.1)'
                                 color: f.getProperties().colorBg
                             })
                         });
@@ -274,33 +266,37 @@ MissionIntelApp.Map = function (app) {
     /* LAYERS SETUP */
     var vectorLayer = new ol.layer.Vector({// "Note that any property set in the options is set as a ol.Object property on the layer object; for example, setting title: 'My Title' in the options means that title is observable, and has get/set accessors."
         id: 'vectors',
-        source: vectorSource
+        source: vectorSource,
+        fallThrough: true
     });
 
     var plannedLayer = new ol.layer.Vector({
-        id: 'planned'
+        id: 'planned',
+        fallThrough: true
     });
 
     var streamLayer = new ol.layer.Vector({
         id: 'stream',
-        source: new ol.source.Vector()
+        source: new ol.source.Vector(),
+        fallThrough: true
     });
 
     var drawLayer = new ol.layer.Vector({
         id: 'draw',
-        source: drawSource
+        source: drawSource,
+        fallThrough: true
     });
-
     var mapLayer = new ol.layer.Tile({
         id: 'map',
         preload: 4,
+        fallThrough: true,
         source: new ol.source.TileJSON({
             url: 'http://api.tiles.mapbox.com/v4/mapbox.dark.json?access_token=pk.eyJ1Ijoic2d0dGVkIiwiYSI6ImNpdWZ1bmZ0OTAwMWoyem5uaGl4a2s0ejIifQ.aqtpdqUySGs1lrPbtITp0g',
             crossOrigin: 'anonymous'
         })
     });
 
-       function addMarkersToLayerBySource(source, lookup, layer) {
+    function addMarkersToLayerBySource(source, lookup, layer) {
            if (!layer.getSource()) {
                layer.setSource(new ol.source.Vector());
            }
@@ -356,25 +352,25 @@ MissionIntelApp.Map = function (app) {
     var scaleLineControl = new ol.control.ScaleLine();
 
     /* VIEW SETUP */
-    var center = ol.proj.transform([42.000, 42.000], 'EPSG:4326', 'EPSG:3857');
+    var center = ol.proj.transform([42.000, 43.000], 'EPSG:4326', 'EPSG:3857');
 
     var view = new ol.View({
         center: center,
-        zoom: 8
+        zoom: 7.9
     });
 
-    var scaleLineControl = new ol.control.ScaleLine();
 
-    var importdragandzoom = new ol.interaction.DragRotateAndZoom();
+    var scaleLineControl = new ol.control.ScaleLine();
 
     // ol.events.condition.custom = function(mapBrowserEvent) {
     //     var browserEvent = mapBrowserEvent.originalEvent;
     //     return (browserEvent.shiftKey);
     // };
-
+    var importdragandzoom = new ol.interaction.DragRotateAndZoom();
     /* MAP SETUP */
     var map = new ol.Map({
         target: 'div-map',
+        fallThrough:true,
         interactions: ol.interaction.defaults().extend([importdragandzoom]),
         layers: [new ol.layer.Tile({source: new ol.source.OSM()})],
         controls: ol.control.defaults({
@@ -388,8 +384,8 @@ MissionIntelApp.Map = function (app) {
     map.addLayer(mapLayer);
     map.addLayer(drawLayer);
     map.addLayer(_group);
-    // map.addLayer(streamLayer);
-    // map.addLayer(plannedLayer);
+    map.addLayer(streamLayer);
+    map.addLayer(plannedLayer);
 
     /* EVENTS */
     map.on('singleclick', onMarkerClick);
@@ -408,9 +404,8 @@ MissionIntelApp.Map = function (app) {
     };
 
     var geo = (new ol.format.GeoJSON).writeFeatures(vectorLayer.getSource().getFeatures());
-    console.log(geo);
 
-    vectorSource.on('change', function(e) {
+    dcsSource.on('change', function(e) {
       console.log('change!');
     });
 

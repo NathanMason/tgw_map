@@ -205,7 +205,7 @@ function DCSDataRetriever(dataCallback) {
         if (connOpen === true) {
             connect();
         }
-    }, 1 * 1000);
+    }, 1 * 3000);
 
 };
 

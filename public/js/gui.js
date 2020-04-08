@@ -187,7 +187,7 @@ MissionIntelApp.GUI = function() {
             }).extend([mousePositionControl, scaleLineControl]),
             view: new ol.View({
                 //center: [0, 0],
-                center: ol.proj.transform([43, 42], 'EPSG:4326', 'EPSG:3857'),
+                center: ol.proj.transform([45, 45], 'EPSG:4326', 'EPSG:3857'),
                 zoom: 8
             })
         });

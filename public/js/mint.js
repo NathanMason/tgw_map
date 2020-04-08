@@ -13,18 +13,18 @@ var MissionIntelApp = function() {
         return el;
     };
 
-    this.makeDraggable = function(id) {
-        makeDraggable(id);
-        return id;
-    };
+    // this.makeDraggable = function(id) {
+    //     makeDraggable(id);
+    //     return id;
+    // };
 
-    this.moveDraggable = function(e) {
-        moveDraggable(e);
-    };
-
-    this.destroyDraggable = function() {
-        destroyDraggable();
-    };
+    // this.moveDraggable = function(e) {
+    //     moveDraggable(e);
+    // };
+    //
+    // this.destroyDraggable = function() {
+    //     destroyDraggable();
+    // };
 
     this.getJSON = function(url, data, callback) {
       getJSON(url, data, callback);
@@ -35,24 +35,24 @@ var MissionIntelApp = function() {
         return el;
     }
 
-    function makeDraggable(elem) {
-        selected = elem;
-        x_elem = x_pos - selected.offsetLeft;
-        y_elem = y_pos - selected.offsetTop;
-    }
-
-    function moveDraggable(e) {
-        x_pos = document.all ? window.event.clientX : e.pageX;
-        y_pos = document.all ? window.event.clientY : e.pageY;
-        if (selected !== null) {
-            selected.style.left = (x_pos - x_elem) + 'px';
-            selected.style.top = (y_pos - y_elem) + 'px';
-        }
-    }
-
-    function destroyDraggable() {
-        selected = null;
-    }
+    // function makeDraggable(elem) {
+    //     selected = elem;
+    //     x_elem = x_pos - selected.offsetLeft;
+    //     y_elem = y_pos - selected.offsetTop;
+    // }
+    //
+    // function moveDraggable(e) {
+    //     x_pos = document.all ? window.event.clientX : e.pageX;
+    //     y_pos = document.all ? window.event.clientY : e.pageY;
+    //     if (selected !== null) {
+    //         selected.style.left = (x_pos - x_elem) + 'px';
+    //         selected.style.top = (y_pos - y_elem) + 'px';
+    //     }
+    // }
+    //
+    // function destroyDraggable() {
+    //     selected = null;
+    // }
 
     var getJSON = function(url, data, callback) {
         // Must encode data
@@ -92,7 +92,7 @@ var MissionIntelApp = function() {
     (new MissionIntelApp.Session(map.update)).initialize();
 
     // var gui = new MissionIntelApp.GUI(this);
-    
+
     // session.initialize();
 
     /* PUBLIC DECLARATIONS OF THE ABOVE INITIALIZATIONS */
@@ -101,21 +101,21 @@ var MissionIntelApp = function() {
     this.map = map;
 
     /* EVENTS */
-    document.addEventListener("mouseup", function(e) {
-        destroyDraggable();
-    });
+    // document.addEventListener("mouseup", function(e) {
+    //     destroyDraggable();
+    // });
+    //
+    // document.addEventListener("mousemove", function(e) {
+    //     moveDraggable(e);
+    // });
 
-    document.addEventListener("mousemove", function(e) {
-        moveDraggable(e);
-    });
-
-    get('map-filters-header').onmousedown = function() {
-        makeDraggable(get('map-filters-container'));
-        //return false;
-    };
-
-    get('map-draw-header').onmousedown = function() {
-        makeDraggable(get('map-draw-container'));
-        //return false;
-    };
+    // get('map-filters-header').onmousedown = function() {
+    //     makeDraggable(get('map-filters-container'));
+    //     //return false;
+    // };
+    //
+    // get('map-draw-header').onmousedown = function() {
+    //     makeDraggable(get('map-draw-container'));
+    //     //return false;
+    // };
 };
