@@ -24,7 +24,6 @@ MissionIntelApp.Session = function(dataCallback) {
 
     this.onmessage = function(evt) {
         localStorage.setItem('dcsData', JSON.stringify(evt.data));
-        console.log('set local');
         dataCallback(JSON.parse(evt.data));
     };
 
