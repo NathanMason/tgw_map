@@ -110,7 +110,7 @@ do
         local unitCnt = 0
         for k, v in pairs( cacheDB ) do
             if checkDead[k] == nil then
-                addUnit(0, k, 0, 0, 0, "D")
+                addUnit(0, k, 0, 0, 0, 0, "D")
             end
             unitCnt = unitCnt + 1
         end
