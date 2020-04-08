@@ -6,10 +6,10 @@ do
     package.path = package.path..";.\\LuaSocket\\?.lua"
     package.cpath = package.cpath..";.\\LuaSocket\\?.dll"
 
-    require = mint.require -- we actually don't need this because of how we run our server 
+    -- require = mint.require -- we actually don't need this because of how we run our server 
     local socket = require("socket") -- load in socket
     local JSON = loadfile("Scripts\\JSON.lua")() -- load in json.
-    require = nil -- really need to delete this i don't like it unseting shit on me will fix later
+    -- require = nil -- really need to delete this i don't like it unseting shit on me will fix later
 	
 	-- dumps out a log file into dcs.log with whatever message and time, though why it's not using io... 
     local function log(msg)
@@ -23,7 +23,7 @@ do
         payload.units = {} -- all the units in the packet
         local checkDead = {} -- creates the dead table
 		-- basically runs a function to add a unit into the cache or update it.
-		local function addUnit(unit, unitID, coalition, lat, lon, action)
+		local function addUnit(unit, unitID, coalition, lat, lon, alt, action)
             -- stores dcs data.
 			local curUnit = {
                 action = action,
@@ -35,12 +35,34 @@ do
 				cacheDB[unitID] = {}
                 cacheDB[unitID].lat = lat
                 cacheDB[unitID].lon = lon
+				cacheDB[unitID].alt = alt
                 curUnit.lat = lat
                 curUnit.lon = lon
+				curUnit.alt = alt
                 -- if we create shit then we get the types and the names and store it 
 				if action == "C" then
                     curUnit.type = unit:getTypeName()
                     curUnit.coalition = coalition
+					local unitdesc = unit:getDesc()
+					tempcategory = unitdesc.category
+					if tempcategory == Unit.Category.GROUND_UNIT then
+						curUnit.category = "Ground"
+					elseif tempcategory == Unit.Category.AIRPLANE then
+						curUnit.category = "Air"
+					elseif tempcategory == Unit.Category.HELICOPTER then
+						curUnit.category = "Heli"
+					elseif tempcategory == Unit.Category.SHIP then
+						curUnit.category = "Ship"
+					else
+						curUnit.category = "Other"
+					end
+					curUnit.missionname = unit:getName()
+					local unitdisplayname = unitdesc.displayName
+					if unitdisplayname ~= nil then
+						curUnit.displayname = unitdisplayname
+					else
+						curUnit.displayname = ""
+					end
                     local PlayerName = unit:getPlayerName()
                     if PlayerName ~= nil then
                         curUnit.playername = PlayerName
@@ -67,11 +89,11 @@ do
                      if Unit.isExist(unit) and Unit.isActive(unit) then
                          if cacheDB[unitID] ~= nil then
                              --env.info('cachelat: '..cacheDB[unitID].lat..' reg lat: '..lat..' cachelon: '..cacheDB[unitID].lon..' reg lon: '..lon)
-                             if cacheDB[unitID].lat ~= lat or cacheDB[unitID].lon ~= lon then
-                                 addUnit(unit, unitID, coalition, lat, lon, "U")
+                             if cacheDB[unitID].lat ~= lat or cacheDB[unitID].lon ~= lon or cacheDB[unitID].alt ~= alt then
+                                 addUnit(unit, unitID, coalition, lat, lon, alt, "U")
                              end
                          else
-                             addUnit(unit, unitID, coalition, lat, lon, "C")
+                             addUnit(unit, unitID, coalition, lat, lon, alt, "C")
                          end
                          checkDead[unitID] = 1
                     end

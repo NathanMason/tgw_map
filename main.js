@@ -80,7 +80,11 @@ var server = websocket.createServer(function (conn) {
 //         coalition: 1,
 //         lat: 41.827466027798,
 //         lon: 41.812401984863,
-//         playername: '' this is empty but we should utalize it along with the player stats.
+//		   alt: 0190.021939291321,
+//		   missionname: 'unit #1231' // this is the name IN the mission editor possibly player name as well.
+//         playername: '', // this is empty but we should utalize it along with the player stats.
+//		   displayname: 'BTR-80 APC',
+//		   Category: 'Ground'
 //  },
 _.set(serverObject, 'unitParse', function (unit) {
     if (_.get(unit, 'action') == 'C') {
@@ -90,13 +94,18 @@ _.set(serverObject, 'unitParse', function (unit) {
                 coalition: _.get(unit, 'coalition'),
                 lat: _.get(unit, 'lat'),
                 lon: _.get(unit, 'lon'),
-                playername: _.get(unit, 'playername', '')
+				alt: _.get(unit, 'alt'),
+				missionname: _.get(unit, 'missionname'),
+                playername: _.get(unit, 'playername', ''),
+				displayname: _.get(unit, 'displayname'),
+				category: _.get(unit, 'category')
         };
     }
     if (_.get(unit, 'action') == 'U') {
         if (_.get(serverObject.units[unit.unitID], 'lat', null) !== null && _.get(serverObject.units[unit.unitID], 'lon', null) !== null) {
             _.set(serverObject.units[unit.unitID], 'lat', _.get(unit, 'lat'));
             _.set(serverObject.units[unit.unitID], 'lon', _.get(unit, 'lon'));
+			_.set(serverObject.units[unit.unitID], 'alt', _.get(unit, 'alt'));
         }
     }
     if (_.get(unit, 'action') == 'D') {
@@ -171,13 +180,17 @@ function toGeoJSON(dcsData) {
         featureCollection.push({
             lat: _.get(unit, 'lat'),
             lon: _.get(unit, 'lon'),
+			alt: _.get(unit, 'alt'),
             monoColor: markerColor,
             SIDC: _sidc + '***',
             side: _.get(unit, 'coalition'),
             size: 30,
             source: 'awacs',
             type: _.get(unit, 'type'),
-            name: _.get(unit, 'playername', '')
+            name: _.get(unit, 'playername', ''),
+			missionname: _.get(unit, 'missionname'),
+			displayname: _.get(unit, 'displayname'),
+			category: _.get(unit, 'category',)
         });
 
     });
