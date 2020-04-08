@@ -154,13 +154,6 @@ MissionIntelApp.GUI = function() {
             }));
         });
 
-        ////// EXAMPLE CODE FROM MILSYMBOLS END
-
-        ////// TEST CODE
-
-        // var symbolCollection = new ol.collection({
-        //         // add a collection of markers here
-        // });
 
         var symbolsSource = new ol.source.Vector({
 
