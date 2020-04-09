@@ -1,19 +1,5 @@
 /* HTML TAGS */
 
-.dataSideBar {
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    transition: 0.3s all;
-    left: -250px;
-    width: 250px;
-    background: rgba(0,0,0, 0.4);
-    z-index: 999999999999999999999999999999;
-}
-.openSideBar {
-    left: 0;
-}
-
 ul {
     margin-top: 0;
     margin-bottom: 0;
@@ -21,6 +7,7 @@ ul {
 }
 
 /* VARIOUS */
+
 .inline-flex {
     display: inline-flex;
 }
