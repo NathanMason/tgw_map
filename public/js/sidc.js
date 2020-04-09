@@ -2226,7 +2226,7 @@ let SIDC = {
 		affiliation: 'U',
 		battleDimension: 'S',
 		status: '-',
-		functionID: 'UU---',
+		functionID: 'CLFF--',
 		modifier1: '-',
 		modifier2: '-'
 	},
@@ -2262,7 +2262,7 @@ let SIDC = {
 		affiliation: 'U',
 		battleDimension: 'U',
 		status: '-',
-		functionID: 'SN----',
+		functionID: 'SN---',
 		modifier1: '-',
 		modifier2: '-'
 	},
