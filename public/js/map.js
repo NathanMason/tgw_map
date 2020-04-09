@@ -15,11 +15,12 @@ MissionIntelApp.Map = function (app) {
         var coordinate = browserEvent.coordinate;
         var pixel = map.getPixelFromCoordinate(coordinate);
         map.forEachFeatureAtPixel(pixel, function (feature) {
+
             if (feature.getProperties().SIDC) {
-                // Display some option window
-                // Reverse parse the SIDC and put that data in the window. This window then needs to have a button with a Save Event on it
-                console.log(feature.getProperties().SIDC);
+                console.log(feature.values);
+                //create a model window with datra of clicked unit
             }
+
         });
     }
 
@@ -81,7 +82,6 @@ MissionIntelApp.Map = function (app) {
 
         // Remove all old features from the layer group
         _group.getLayers().clear(true);
-        console.log(collection);
 
         // Add updated features to layer TODO: THE BELOW FUNCTION DOES NOT WORK... THE COLLECTION IS JUST PASSED TO THE streamLayer (SEE BELOW)
         [].forEach.call(collection, function (obj) {
@@ -89,7 +89,6 @@ MissionIntelApp.Map = function (app) {
 
             // If there is a layer with an ID equal to SOURCE then this layer exists and we will add the feature to this layer
             _group.getLayers().forEach(function (layer) {
-                console.log('exiats');
                 if (layer.getProperties().id == obj.getProperties().source) {
                     exists = true;
                     layer.getSource().addFeature(obj);
@@ -98,7 +97,6 @@ MissionIntelApp.Map = function (app) {
 
             // .. if there is not - then we have to make it, add a source and then add the feature here
             if (!exists) {
-                console.log('not exists');
                 let grp = _group.getLayers();
                 grp.push(new ol.layer.Vector({
                     id: obj.getProperties().source,
@@ -262,7 +260,6 @@ MissionIntelApp.Map = function (app) {
     /* LAYER GROUPS */
     let _group = new ol.layer.Group;
 
-
     /* LAYERS SETUP */
     var vectorLayer = new ol.layer.Vector({// "Note that any property set in the options is set as a ol.Object property on the layer object; for example, setting title: 'My Title' in the options means that title is observable, and has get/set accessors."
         id: 'vectors',
@@ -286,6 +283,7 @@ MissionIntelApp.Map = function (app) {
         source: drawSource,
         fallThrough: true
     });
+
     var mapLayer = new ol.layer.Tile({
         id: 'map',
         preload: 4,
@@ -359,14 +357,10 @@ MissionIntelApp.Map = function (app) {
         zoom: 7.9
     });
 
-
     var scaleLineControl = new ol.control.ScaleLine();
 
-    // ol.events.condition.custom = function(mapBrowserEvent) {
-    //     var browserEvent = mapBrowserEvent.originalEvent;
-    //     return (browserEvent.shiftKey);
-    // };
     var importdragandzoom = new ol.interaction.DragRotateAndZoom();
+
     /* MAP SETUP */
     var map = new ol.Map({
         target: 'div-map',
@@ -388,7 +382,7 @@ MissionIntelApp.Map = function (app) {
     map.addLayer(plannedLayer);
 
     /* EVENTS */
-    map.on('singleclick', onMarkerClick);
+    map.on('dblclick', onMarkerClick);
 
     // --> map filters
     document.getElementById("map-filters-awacs").onclick = function (element) {
