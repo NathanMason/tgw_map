@@ -2,7 +2,7 @@
   "name": "RI",
   "version": "0.0.5",
   "description": "Main webserver for Red Iberia Forked from Dynamic DCS",
-  "main": "main.js",
+  "main": "server.js",
   "author": [
     "birgersp",
     "jkhoel",
@@ -13,18 +13,20 @@
   "private": true,
   "license": "BSD",
   "dependencies": {
+    "angular": "^1.7.9",
+    "angular-route": "^1.7.9",
     "body-parser": "^1.19.0",
     "ejs": "^2.7.4",
     "express": "^4.17.1",
-    "jquery.json-viewer": "^1.4.0",
-    "node-json-db": "^0.7.3",
-    "process": "^0.11.9",
-    "request": "^2.88.2",
     "geojson": "^0.4.1",
     "grunt": "^1.0.1",
+    "jquery.json-viewer": "^1.4.0",
     "lodash": "^4.17.4",
     "milsymbol": "^1.1.0",
-    "nodejs-websocket": "^1.7.1"
+    "node-json-db": "^0.7.3",
+    "nodejs-websocket": "^1.7.1",
+    "process": "^0.11.9",
+    "request": "^2.88.2"
   },
   "nodemonConfig": {
     "ignore": [
@@ -32,6 +34,6 @@
     ]
   },
   "scripts": {
-    "start": "node main.js"
+    "start": "node server.js"
   }
 }

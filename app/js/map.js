@@ -1,4 +1,4 @@
-MissionIntelApp.Map = function (app) {
+MissionIntelApp.Map = function (app, $rootScope) {
 	var dground = false; // do we want detailed ground to show yes or no.
 
 	//////////////////////////////////////////////////////////////////////////
@@ -10,8 +10,10 @@ MissionIntelApp.Map = function (app) {
         map.forEachFeatureAtPixel(pixel, function (feature) {
 
             if (feature.getProperties().SIDC) {
-                console.log(feature.values_);
-                //create a model window with datra of clicked unit
+				localStorage.removeItem('currentUnit');
+		        localStorage.setItem('currentUnit', JSON.stringify(feature.values_));
+				$rootScope.showNow = 'freddo frog';
+				console.log($rootScope.showNow);
             }
 
         });
@@ -167,8 +169,6 @@ MissionIntelApp.Map = function (app) {
             crossOrigin: 'anonymous'
         })
     });
-
-
 
 	//////////////////////////////////////////////////////////////////////////
 	///////// imports the drag and zoom feature from open layers

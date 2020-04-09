@@ -1,6 +1,9 @@
 MissionIntelApp.Session = function(dataCallback) {
     var dcsdata;
 
+    //////////////////////////////////////////////////////////////////////////
+    ///////// CREATE THER SOCKET CONNECTION
+    //////////////////////////////////////////////////////////////////////////
     this.initialize = function() {
 
         var wsURL = "";
@@ -22,10 +25,13 @@ MissionIntelApp.Session = function(dataCallback) {
         });
     };
 
+    //////////////////////////////////////////////////////////////////////////
+    ///////// HANDLE NEW DATA SENT THROUGH THE SOCKET
+    //////////////////////////////////////////////////////////////////////////
     this.onmessage = function(evt) {
-        localStorage.clear();
-        localStorage.setItem('dcsData', JSON.stringify(evt.data));
-        dataCallback(JSON.parse(evt.data));
+        localStorage.clear(); // clear old unit data from localStorage
+        localStorage.setItem('dcsData', JSON.stringify(evt.data)); // add new unit data to localStorage
+        dataCallback(); // send
     };
 
 };

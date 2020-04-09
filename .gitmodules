@@ -1,4 +1,0 @@
-[submodule "public/resources/bin"]
-	path = public/resources/bin
-	url = https://github.com/jkhoel/dcs-mission-intel-bin.git
-	branch = master

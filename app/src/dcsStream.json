@@ -26,13 +26,13 @@ var dcsStream = {
         "id" : "2",
         "geometry": {
             "type": "Point",
-            "coordinates": [42.500, 42.500]
+            "coordinates": [42, 42]
         },
         "properties": {
             "SIDC": "SHAPMFF-----***",
             "name": "EAGLE",
             "fullname": "",
-            "command": "THE SHIT BELOW DON'T WORK!",
+            "command": "",
             "direction" : 1270,
             "altitudeDepth": "FL200",
             "source": "awacs"

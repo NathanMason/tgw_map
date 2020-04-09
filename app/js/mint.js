@@ -1,27 +1,8 @@
-var MissionIntelApp = function() {
-const DEBUG = false;
-    /* VARIABLES */
-    var selected = null,
-        x_pos = 0,
-        y_pos = 0,
-        x_elem = 0,
-        y_elem = 0;
+var MissionIntelApp = function($rootScope) {
 
-    /* APP-WIDE FUNCTIONS */
-    this.get = function(el) {
-        get(el);
-        return el;
-    };
-
-    this.getJSON = function(url, data, callback) {
-      getJSON(url, data, callback);
-    }
-
-    function get(el) {
-        if (typeof el == 'string') return document.getElementById(el);
-        return el;
-    }
-
+    //////////////////////////////////////////////////////////////////////////
+    ///////// ENCODE THE DATA
+    //////////////////////////////////////////////////////////////////////////
     var getJSON = function(url, data, callback) {
         // Must encode data
         if (data && typeof(data) === 'object') {
@@ -50,12 +31,22 @@ const DEBUG = false;
         };
         xmlHttp.send(null);
     };
-
-    /* INITIALIZE MAP */
-    var map = new MissionIntelApp.Map(this);
-    if (DEBUG) {
-        (new MissionIntelApp.Session(console.log)).initialize();
+    function get(el) {
+        if (typeof el == 'string') return document.getElementById(el);
+        return el;
     }
+    this.getJSON = function(url, data, callback) {
+      getJSON(url, data, callback);
+    }
+
+    //////////////////////////////////////////////////////////////////////////
+    ///////// initialize the map - this calls map.js
+    //////////////////////////////////////////////////////////////////////////
+    var map = new MissionIntelApp.Map(this);
+
+    //////////////////////////////////////////////////////////////////////////
+    ///////// call the socket and store new received data then update the map.
+    //////////////////////////////////////////////////////////////////////////
     (new MissionIntelApp.Session(map.update)).initialize();
     this.map = map;
 

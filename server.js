@@ -1,4 +1,6 @@
-// our constants, these never change unless done by the user
+//////////////////////////////////////////////////////////////////////////
+///////// our constants, these never change unless done by the user
+//////////////////////////////////////////////////////////////////////////
 const PORT = 3001; // our port we listen to dcs on.
 const ADDRESS = "127.0.0.1"; // our address
 const net = require('net'); // we need net
@@ -8,56 +10,68 @@ const showsides = true; // do we show sides.
 const onesecond = 1000; // how many milliseconds to 1 second.
 const refreshrate = 3; // our server refresh rate.
 
-
+//////////////////////////////////////////////////////////////////////////
+///////// THRIDPARTY PACKAGES
+//////////////////////////////////////////////////////////////////////////
 const bodyParser = require('body-parser');
 const path = require('path');
-
 var express = require('express');
 var _ = require('lodash');
 var GeoJSON = require('geojson');
+
+//////////////////////////////////////////////////////////////////////////
+///////// SET EXPRESS
+//////////////////////////////////////////////////////////////////////////
 var app = express();
 
-// some stuff for trying to hook in the stats server to grab the db.
+//////////////////////////////////////////////////////////////////////////
+///////// TGW USER STATS APPLICATION (this will be merged into the app folder soon.)
+//////////////////////////////////////////////////////////////////////////
 const API = require(path.join(__dirname, 'api/db_api.js'));
 const CONFIG = require(path.join(__dirname, 'config.js'));
 const LOGGER = require(path.join(__dirname, 'logger.js'));
-
-//vars for easy logging
-const e = 'error';
-// const i = 'info';
-const t = 'task';
+const e = 'error'; //vars for easy logging
+const t = 'task'; // const i = 'info';
 
 
-
-// believe these are for encoding could be wrong. 
+// believe these are for encoding could be wrong.
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({limit:CONFIG.getPostJsonSizeLimit()}));
-app.use('/js', express.static(path.join(__dirname, 'views/js')));
-app.use('/css', express.static(path.join(__dirname, 'views/css')));
-app.use('/json_viewer', express.static(__dirname + '/node_modules/jquery.json-viewer/json-viewer/'));
-app.use('/assets', express.static(path.join(__dirname, 'views/assets')));
-app.set('view engine', 'ejs');
 
-//directories
-app.use('/', express.static(__dirname + '/public'));
+//////////////////////////////////////////////////////////////////////////
+///////// server folders
+//////////////////////////////////////////////////////////////////////////
+app.use('/js', express.static(path.join(__dirname, 'views/js')));  // robs stats site, move this ASAP into our angular site
+app.use('/css', express.static(path.join(__dirname, 'views/css')));  // robs stats site, move this ASAP into our angular site
+app.use('/json_viewer', express.static(__dirname + '/node_modules/jquery.json-viewer/json-viewer/'));  // robs stats site, move this ASAP into our angular site
+app.use('/assets', express.static(path.join(__dirname, 'views/assets')));  // robs stats site, move this ASAP into our angular site
+app.set('view engine', 'ejs');  // robs stats site, move this ASAP into our angular site
+
+app.use('/', express.static(__dirname + '/app'));
 app.use('/scripts', express.static(__dirname + '/node_modules'));
 
-//start the webserver
+//////////////////////////////////////////////////////////////////////////
+///////// LAUNCH THE SERVERS
+//////////////////////////////////////////////////////////////////////////
 app.listen(webport);
 
+//////////////////////////////////////////////////////////////////////////
+///////// our constants, these never change unless done by the user
+//////////////////////////////////////////////////////////////////////////
 MissionIntelApp = {};
-require('./public/js/comm.js');
-require('./public/js/marker.js');
-require('./public/js/marker-fids.js');
+require('./app/js/comm.js');
+require('./app/js/marker.js');
+require('./app/js/marker-fids.js');
 
-var Utility = require('./public/js/utility.js');
-var SIDCtable = require('./public/js/sidc.js');
+var SIDCtable = require('./app/js/sidc.js');
 
 var serverObject = {};
 _.set(serverObject, 'units', []);
 _.set(serverObject, 'requestArray', []);
 
-// socket
+//////////////////////////////////////////////////////////////////////////
+///////// SETUP AND CREATE SOCKET
+//////////////////////////////////////////////////////////////////////////
 var wsConnections = [];
 var websocket = require('nodejs-websocket');
 var server = websocket.createServer(function (conn) {
@@ -72,6 +86,7 @@ var server = websocket.createServer(function (conn) {
     });
 });
 
+//////////////////////////////////////////////////////////////////////////
 // this underscore function loops through all the data received frokm DCS and parses into a json object.
 // the object produced is
 //  {
@@ -86,6 +101,7 @@ var server = websocket.createServer(function (conn) {
 //		   displayname: 'BTR-80 APC',
 //		   Category: 'Ground'
 //  },
+//////////////////////////////////////////////////////////////////////////
 _.set(serverObject, 'unitParse', function (unit) {
     if (_.get(unit, 'action') == 'C') {
         serverObject.units[unit.unitID] = {
@@ -117,82 +133,71 @@ _.set(serverObject, 'unitParse', function (unit) {
 
 // convert our datag to geojson format. and we need to send this to the map.js file
 function toGeoJSON(dcsData) {
-
-    // console.log("############################");
-
     let featureCollection = [];
-
     dcsData.units.forEach(function (unit) {
-		// console.log("inside dcsData.units")
-		// console.log(unit)
         serverObject.unitParse(unit);
     });
 
     serverObject.units.forEach(function (unit) {
-		//console.log("inside server object")
-        // DEFAULT MARKER
-        let side = '0';
-        let markerColor = 'rgb(252, 246, 127)';
+            let side = '0';
+            let markerColor = 'rgb(252, 246, 127)';
 
-        let _sidcObject = {};
-        _sidcObject["codingScheme"] = 'S';
-        _sidcObject["affiliation"] = 'U';
-        _sidcObject["battleDimension"] = 'G';
-        _sidcObject["status"] = '-';
-        _sidcObject["functionID"] = '-----';
-        _sidcObject["modifier1"] = '-';
-        _sidcObject["modifier2"] = '-';
+            let _sidcObject = {};
+            _sidcObject["codingScheme"] = 'S';
+            _sidcObject["affiliation"] = 'U';
+            _sidcObject["battleDimension"] = 'G';
+            _sidcObject["status"] = '-';
+            _sidcObject["functionID"] = '-----';
+            _sidcObject["modifier1"] = '-';
+            _sidcObject["modifier2"] = '-';
 
-        // make a SIDC Object to store all values, so that we can override these as needed
-        let lookup = SIDCtable[unit.type];
-        // Check if this unit's type is defined in the table
-        if (!lookup)
-		{
-			console.log("unit type:" + unit.type + "is missing from the SIDCtable! "); // we dump a console log and then set into the else, this should basically make a default item unless i'm mistaken.
-			// plus it will give us a log of items we need to deal with over time. 
-			//return;
-		}
-		else
-		{
-			for (var atr in lookup) {
-				if (lookup[atr])
-					_sidcObject[atr] = lookup[atr];
-			}
-		}
-        // set showsides == false if we don't want this.
-		if (showsides == true)
-		{
-			if (unit.coalition == 1) {
-				markerColor = 'rgb(255, 88, 88)';
-				_sidcObject["affiliation"] = 'H';
-			}
-			if (unit.coalition == 2) {
-				markerColor = 'rgb(128, 224, 255)';
-				_sidcObject["affiliation"] = 'F';
-			}
-		}
-        // Generate final SIDC string
-        let _sidc = "";
-        for (var atr in _sidcObject) {
-            _sidc += _sidcObject[atr];
-        }
+            // make a SIDC Object to store all values, so that we can override these as needed
+            let lookup = SIDCtable[unit.type];
+            // Check if this unit's type is defined in the table
+            if (!lookup) {
+    			console.log("unit type:" + unit.type + "is missing from the SIDCtable! "); // we dump a console log and then set into the else, this should basically make a default item unless i'm mistaken.
+    			// plus it will give us a log of items we need to deal with over time.
+    			//return;
+    		}
+    		else {
+    			for (var atr in lookup) {
+    				if (lookup[atr])
+    					_sidcObject[atr] = lookup[atr];
+    			}
+    		}
+            // set showsides == false if we don't want this.
+    		if (showsides == true) {
+    			if (unit.coalition == 1) {
+    				markerColor = 'rgb(255, 88, 88)';
+    				_sidcObject["affiliation"] = 'H';
+    			}
+    			if (unit.coalition == 2) {
+    				markerColor = 'rgb(128, 224, 255)';
+    				_sidcObject["affiliation"] = 'F';
+    			}
+    		}
+            // Generate final SIDC string
+            let _sidc = "";
+            for (var atr in _sidcObject) {
+                _sidc += _sidcObject[atr];
+            }
 
-        // Add unit to the feature collection
-        featureCollection.push({
-            lat: _.get(unit, 'lat'),
-            lon: _.get(unit, 'lon'),
-			alt: _.get(unit, 'alt'),
-            monoColor: markerColor,
-            SIDC: _sidc + '***',
-            side: _.get(unit, 'coalition'),
-            size: 30,
-            source: 'awacs',
-            type: _.get(unit, 'type'),
-            name: _.get(unit, 'playername', ''),
-			missionname: _.get(unit, 'missionname'),
-			displayname: _.get(unit, 'displayname'),
-			category: _.get(unit, 'category',)
-        });
+            // Add unit to the feature collection
+            featureCollection.push({
+                lat: _.get(unit, 'lat'),
+                lon: _.get(unit, 'lon'),
+    			alt: _.get(unit, 'alt'),
+                monoColor: markerColor,
+                SIDC: _sidc + '***',
+                side: _.get(unit, 'coalition'),
+                size: 30,
+                source: 'awacs',
+                type: _.get(unit, 'type'),
+                name: _.get(unit, 'playername', ''),
+    			missionname: _.get(unit, 'missionname'),
+    			displayname: _.get(unit, 'displayname'),
+    			category: _.get(unit, 'category',)
+            });
 
     });
 
