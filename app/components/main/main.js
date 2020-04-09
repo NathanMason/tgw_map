@@ -312,7 +312,6 @@
 
         };
 
-
         MissionIntelApp.Marker = function (codingScheme, affiliation, battleDimension, status, functionID, modifier1, modifier2, source, x, y) {
             this.codingScheme = codingScheme;   // Allways 'S'
             this.affiliation = affiliation;
@@ -326,9 +325,6 @@
             this.y = y;
         };
 
-        /**
-         * @type {MissionIntelApp.Marker}
-         */
         MissionIntelApp.Marker.getHash = function (marker) {
             return "" + marker.codingScheme + marker.affiliation + marker.battleDim + marker.status + marker.functionID + marker.modifier1 + marker.modifier2;
         };
