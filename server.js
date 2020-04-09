@@ -48,6 +48,7 @@ app.use('/assets', express.static(path.join(__dirname, 'views/assets')));  // ro
 app.set('view engine', 'ejs');  // robs stats site, move this ASAP into our angular site
 
 app.use('/', express.static(__dirname + '/app'));
+app.use('/appJS', express.static(__dirname + '/app/js'));
 app.use('/scripts', express.static(__dirname + '/node_modules'));
 
 //////////////////////////////////////////////////////////////////////////
