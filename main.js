@@ -1,14 +1,49 @@
+// our constants, these never change unless done by the user
+const PORT = 3001; // our port we listen to dcs on.
+const ADDRESS = "127.0.0.1"; // our address
+const net = require('net'); // we need net
+const webport = 8080; // our webport
+const serverlisten = 8081; // our pass through for the webserver
+const showsides = true; // do we show sides.
+const onesecond = 1000; // how many milliseconds to 1 second.
+const refreshrate = 3; // our server refresh rate.
+
+
+const bodyParser = require('body-parser');
+const path = require('path');
+
 var express = require('express');
 var _ = require('lodash');
 var GeoJSON = require('geojson');
 var app = express();
+
+// some stuff for trying to hook in the stats server to grab the db.
+const API = require(path.join(__dirname, 'api/db_api.js'));
+const CONFIG = require(path.join(__dirname, 'config.js'));
+const LOGGER = require(path.join(__dirname, 'logger.js'));
+
+//vars for easy logging
+const e = 'error';
+// const i = 'info';
+const t = 'task';
+
+
+
+// believe these are for encoding could be wrong. 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit:CONFIG.getPostJsonSizeLimit()}));
+app.use('/js', express.static(path.join(__dirname, 'views/js')));
+app.use('/css', express.static(path.join(__dirname, 'views/css')));
+app.use('/json_viewer', express.static(__dirname + '/node_modules/jquery.json-viewer/json-viewer/'));
+app.use('/assets', express.static(path.join(__dirname, 'views/assets')));
+app.set('view engine', 'ejs');
 
 //directories
 app.use('/', express.static(__dirname + '/public'));
 app.use('/scripts', express.static(__dirname + '/node_modules'));
 
 //start the webserver
-app.listen(8080);
+app.listen(webport);
 
 MissionIntelApp = {};
 require('./public/js/comm.js');
@@ -45,7 +80,11 @@ var server = websocket.createServer(function (conn) {
 //         coalition: 1,
 //         lat: 41.827466027798,
 //         lon: 41.812401984863,
-//         playername: '' this is empty but we should utalize it along with the player stats.
+//		   alt: 0190.021939291321,
+//		   missionname: 'unit #1231' // this is the name IN the mission editor possibly player name as well.
+//         playername: '', // this is empty but we should utalize it along with the player stats.
+//		   displayname: 'BTR-80 APC',
+//		   Category: 'Ground'
 //  },
 _.set(serverObject, 'unitParse', function (unit) {
     if (_.get(unit, 'action') == 'C') {
@@ -55,16 +94,22 @@ _.set(serverObject, 'unitParse', function (unit) {
                 coalition: _.get(unit, 'coalition'),
                 lat: _.get(unit, 'lat'),
                 lon: _.get(unit, 'lon'),
-                playername: _.get(unit, 'playername', '')
+				alt: _.get(unit, 'alt'),
+				missionname: _.get(unit, 'missionname'),
+                playername: _.get(unit, 'playername', ''),
+				displayname: _.get(unit, 'displayname'),
+				category: _.get(unit, 'category')
         };
     }
     if (_.get(unit, 'action') == 'U') {
         if (_.get(serverObject.units[unit.unitID], 'lat', null) !== null && _.get(serverObject.units[unit.unitID], 'lon', null) !== null) {
             _.set(serverObject.units[unit.unitID], 'lat', _.get(unit, 'lat'));
             _.set(serverObject.units[unit.unitID], 'lon', _.get(unit, 'lon'));
+			_.set(serverObject.units[unit.unitID], 'alt', _.get(unit, 'alt'));
         }
     }
     if (_.get(unit, 'action') == 'D') {
+
         delete serverObject.units[unit.unitID];
     }
     return true;
@@ -73,13 +118,13 @@ _.set(serverObject, 'unitParse', function (unit) {
 // convert our datag to geojson format. and we need to send this to the map.js file
 function toGeoJSON(dcsData) {
 
-     console.log("############################");
+    // console.log("############################");
 
     let featureCollection = [];
 
     dcsData.units.forEach(function (unit) {
-		console.log("inside dcsData.units")
-		console.log(unit)
+		// console.log("inside dcsData.units")
+		// console.log(unit)
         serverObject.unitParse(unit);
     });
 
@@ -102,23 +147,30 @@ function toGeoJSON(dcsData) {
         let lookup = SIDCtable[unit.type];
         // Check if this unit's type is defined in the table
         if (!lookup)
-            return;
-
-        for (var atr in lookup) {
-            if (lookup[atr])
-                _sidcObject[atr] = lookup[atr];
-        }
-
-        // OPTION: [COMMENT TO TURN OFF] SHOW AFFILIATION
-        if (unit.coalition == 1) {
-            markerColor = 'rgb(255, 88, 88)';
-            _sidcObject["affiliation"] = 'H';
-        }
-        if (unit.coalition == 2) {
-            markerColor = 'rgb(128, 224, 255)';
-            _sidcObject["affiliation"] = 'F';
-        }
-
+		{
+			console.log("unit type:" + unit.type + "is missing from the SIDCtable! "); // we dump a console log and then set into the else, this should basically make a default item unless i'm mistaken.
+			// plus it will give us a log of items we need to deal with over time. 
+			//return;
+		}
+		else
+		{
+			for (var atr in lookup) {
+				if (lookup[atr])
+					_sidcObject[atr] = lookup[atr];
+			}
+		}
+        // set showsides == false if we don't want this.
+		if (showsides == true)
+		{
+			if (unit.coalition == 1) {
+				markerColor = 'rgb(255, 88, 88)';
+				_sidcObject["affiliation"] = 'H';
+			}
+			if (unit.coalition == 2) {
+				markerColor = 'rgb(128, 224, 255)';
+				_sidcObject["affiliation"] = 'F';
+			}
+		}
         // Generate final SIDC string
         let _sidc = "";
         for (var atr in _sidcObject) {
@@ -129,13 +181,17 @@ function toGeoJSON(dcsData) {
         featureCollection.push({
             lat: _.get(unit, 'lat'),
             lon: _.get(unit, 'lon'),
+			alt: _.get(unit, 'alt'),
             monoColor: markerColor,
             SIDC: _sidc + '***',
             side: _.get(unit, 'coalition'),
             size: 30,
             source: 'awacs',
             type: _.get(unit, 'type'),
-            name: _.get(unit, 'playername', '')
+            name: _.get(unit, 'playername', ''),
+			missionname: _.get(unit, 'missionname'),
+			displayname: _.get(unit, 'displayname'),
+			category: _.get(unit, 'category',)
         });
 
     });
@@ -151,15 +207,11 @@ function receiveDCSData(dcsData) {
         wsConnections[connection].sendText(JSON.stringify(geoJSONData));
 }
 
-server.listen(8081);
+server.listen(serverlisten);
 
 function DCSDataRetriever(dataCallback) {
 
-    const PORT = 3001;
-    const ADDRESS = "127.0.0.1";
     var connOpen = true;
-
-    const net = require('net');
     let buffer;
 
     function connect() {
@@ -192,6 +244,8 @@ function DCSDataRetriever(dataCallback) {
         client.on('close', () => {
             time = new Date();
             console.log(time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds() + ' :: Reconnecting....');
+			// ok we need a way to reset the data because DCS expects it to be clean if a connection is lost! so set the SERVER object list to 0 ie clean it out and wait.
+			serverObject.length = 0
             connOpen = true;
         });
 
@@ -205,9 +259,27 @@ function DCSDataRetriever(dataCallback) {
         if (connOpen === true) {
             connect();
         }
-    }, 1 * 3000);
+    }, refreshrate * onesecond);
 
 };
+//API for WEB View
+app.post('/api/web/fetch', (req, res) => {
+  LOGGER.log('WEB Server Stats Requested: Sending the JSON object', i);
+  res.json(API.getJson()); //send them the data they need
+});
+
+//API for SLSC Server
+//update the database with new info
+app.post('/api/dcs/slmod/update', (req, res) => {
+  LOGGER.log('DCS Server Stats Received: "' + req.body.name + '", ID ' + req.body.id, i);
+  var err = API.update(req.body); //send it the stats and server info
+  if (err) {
+    LOGGER.log(err, e);
+    res.end('fail');
+  } else { res.end('pass') }
+
+});
+
 
 // start the process to retrieve DCS packets
 DCSDataRetriever(receiveDCSData);

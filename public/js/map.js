@@ -1,5 +1,6 @@
 MissionIntelApp.Map = function (app) {
-
+	var dground = false; // do we want detailed ground to show yes or no. 
+	
     /* GLOBAL FUNCTIONS */
     this.toggleLayer = function (layerName) {
         toggleLayer(layerName);
@@ -53,13 +54,49 @@ MissionIntelApp.Map = function (app) {
 
         // Generate Markers
         s.forEachFeature(function (f) {
-
+			// store our altitude etc.
+			var fixedalt = f.getProperties().alt;
+			var utype = f.getProperties().missionname;
+			var ptype = f.getProperties().displayname;
+			// if we are air we have altitude and we want to do some quick maths and formating.
+			if ((f.getProperties().category == 'Air') || (f.getProperties().category == 'Heli'))
+			{
+				fixedalt = fixedalt * 3.28084;
+				fixedalt = fixedalt.toFixed(0);
+				fixedalt = fixedalt.toString() + "ft";
+				
+			}
+			else if (f.getProperties().category == 'Ship') 
+			{
+					if (dground == false)
+					{	
+						ptype = "";
+					}
+					fixedalt = "";
+			}
+			else
+			{
+				// if detailed ground is false then kill these for this marker.
+				if (dground == false)
+				{
+					utype = "";
+					ptype = "";
+				}
+				fixedalt = "";
+				
+			}
+			
             // Draw Marker
             var mySymbol = new ms.Symbol(
                     f.getProperties().SIDC, {
                 // size: iconSize[(f.getProperties().SIDC).charAt(11)],
                 uniqueDesignation: f.getProperties().name
-            }
+            }, 
+			{infoColor: "white" }, 
+			{ platformType: ptype }, 
+			{ altitudeDepth : fixedalt },
+			{ type : utype },
+			{ additionalInformation : "" }
             );
 
             var myCanvas = mySymbol.asCanvas();
@@ -303,9 +340,10 @@ MissionIntelApp.Map = function (app) {
                if (f.getProperties().source == lookup) {
                    var mySymbol = new ms.Symbol(
                            f.getProperties().SIDC, {
-                       // size: iconSize[(f.getProperties().SIDC).charAt(11)],
-                       uniqueDesignation: f.getProperties().name
-                   }
+						// size: iconSize[(f.getProperties().SIDC).charAt(11)],
+                       uniqueDesignation: f.getProperties().name,
+					   
+                   }, {infoColor: "white" }
                    );
 
                    var myCanvas = mySymbol.asCanvas();
