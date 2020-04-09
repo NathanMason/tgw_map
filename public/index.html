@@ -1,94 +1,44 @@
 <!DOCTYPE HTML>
 <html>
+        <head>
 
-<head>
+            <link href="https://fonts.googleapis.com/css?family=Lato|Roboto|Roboto+Condensed" rel="stylesheet">
+            <link rel="stylesheet" href="./css/fontello.css" type="text/css">
+            <link rel="stylesheet" href="./css/ol.css" type="text/css">
+            <link rel="stylesheet" href="./css/style.css" type="text/css">
 
-    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto|Roboto+Condensed" rel="stylesheet">
-    <link rel="stylesheet" href="./css/fontello.css" type="text/css">
-    <link rel="stylesheet" href="./css/ol.css" type="text/css">
-    <link rel="stylesheet" href="./css/style.css" type="text/css">
+            <meta charset="UTF-8" />
 
-    <meta charset="UTF-8" />
+            <title>RED IBERIA</title>
 
-    <title>RED IBERIA</title>
+            <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+            <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+            <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/build/ol.js" type="text/javascript"></script>
+            <script src="https://d3js.org/d3.v4.min.js"></script>
+            <script src="./scripts/milsymbol/dist/milsymbol.js"></script>
+            <script src="js/mint.js"></script>
+            <script src="js/map.js"></script>
+            <script src="js/session.js"></script>
+            <script src="js/marker.js"></script>
+            <script src="src/dcsStream.json" type="text/javascript"></script>
 
-    <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
-    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/build/ol.js" type="text/javascript"></script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="./scripts/milsymbol/dist/milsymbol.js"></script>
-    <script src="js/mint.js"></script>
-    <script src="js/map.js"></script>
-    <script src="js/navigation.js"></script>
-    <script src="js/notes.js"></script>
-    <script src="js/session.js"></script>
-    <script src="js/marker.js"></script>
+            <script>
+                window.addEventListener("load", function() {
+                    var app = new MissionIntelApp();
+                });
+            </script>
+        </head>
 
-    <script src="src/dcsStream.json" type="text/javascript"></script>
-    <script src="src/vectors/vectors.geojson" type="text/javascript"></script>
-    <script>
-        window.addEventListener("load", function() {
+        <body>
 
-            var app = new MissionIntelApp();
+            <div class="navigation-container" style="-moz-user-select: none;">
+                <ul class="navigation nav-root">
+                    <li class="mint-logo">RED IBERIA <small>v.1.0a</small></li>
+                    <!-- <li id="clock" class="clock" style="float: right;"></li> -->
+                </ul>
+            </div>
 
-        });
-    </script>
-</head>
+            <div id="div-map" class="div-map"></div>
 
-<body>
-
-    <div class="navigation-container" style="-moz-user-select: none;">
-        <ul class="navigation nav-root">
-            <li class="mint-logo">RED IBERIA <small>v.1.0a</small></li>
-            <li style="display: none" id="menu-root-1">VIEW MAP</li>
-            <li style="display: none" id="menu-root-2">NOTES</li>
-            <li style="display: none" id="menu-root-3">AIR TASKING ORDERS</li>
-            <li style="display: none" id="menu-root-settings" style="float: right; border: 0; font-size:200%;"><i class="icon-cog" id="menu-root-settings"></i></li>
-            <li id="clock" class="clock" style="float: right;"></li>
-        </ul>
-        <ul class="navigation nav-submenu" style="display: none" id="notes-submenu1">
-            <li id="menu-notes-sub-11">&nbsp;</li>
-            <li id="menu-notes-sub-12">+ ADD NOTE</li>
-        </ul>
-
-        <ul id="menu-mode-dropdown" style="display: none" class="menu-mode-dropdown-content">
-            <li id="menu-settings-1">SETTINGS</li>
-            <li id="menu-settings-2">LOG OUT</li>
-        </ul>
-    </div>
-
-    <div style="display: none"  id="map-filters-container" class="map-menu-container map-menu-filters-pos">
-        <ul id="map-filters">
-            <li id="map-filters-header" class="map-menu-header cursor-move">Sources:</li>
-            <li id="map-filters-awacs" class="map-menu-object cursor-pointer enabled-map-menu-object">AWACS</li>
-            <li  id="map-filters-planned" class="map-menu-object cursor-pointer enabled-map-menu-object">Planned</li>
-        </ul>
-    </div>
-
-    <div style="display: none" id="map-draw-container" class="map-menu-container map-menu-draw-pos">
-        <ul id="map-draw-tools">
-            <li id="map-draw-header" class="map-menu-header cursor-move">Draw:</li>
-            <li id="map-draw-brush" class="enabled-map-menu-object cursor-crosshair">
-                <div id="map-draw-brush-type-selector" class="wrapper-dropdown" tabindex="1">Brush Type
-                  <ul class="dropdown">
-                    <li id="map-draw-brush-type-none" class="map-menu-object">None</li>
-                    <li id="map-draw-brush-type-point" class="map-menu-object">Point</li>
-                    <li id="map-draw-brush-type-circle" class="map-menu-object">Circle</li>
-                    <li id="map-draw-brush-type-polygon" class="map-menu-object">Polygon</li>
-                    <li id="map-draw-brush-type-linestring" class="map-menu-object">LineString</li>
-                  </ul>
-                </div>
-            </li>
-        </ul>
-        <ul id="map-draw-features">
-            <!-- JS generated child nodes -->
-        </ul>
-    </div>
-
-    <div id="mode-notes-wrapper" class="mode-notes-wrapper">
-        <ul id="mode-notes-content" class="mode-notes-content"></ul>
-    </div>
-
-    <div id="div-map" class="div-map"></div>
-</body>
+        </body>
 </html>

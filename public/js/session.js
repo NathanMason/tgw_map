@@ -23,6 +23,7 @@ MissionIntelApp.Session = function(dataCallback) {
     };
 
     this.onmessage = function(evt) {
+        localStorage.clear();
         localStorage.setItem('dcsData', JSON.stringify(evt.data));
         dataCallback(JSON.parse(evt.data));
     };
