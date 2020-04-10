@@ -673,3 +673,18 @@ body {
 .ol-overlaycontainer-stopevent, .ol-overlaycontainer, .ol-unselectable.ol-layers {
     pointer-events: none;
 }
+
+
+
+
+.infoBox {
+    width: 150px;
+    height: 200px;
+    background: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 300px;
+    left: 300px;
+    color: #fff;
+    border: 1px solid #303030;
+    padding: 10px
+}

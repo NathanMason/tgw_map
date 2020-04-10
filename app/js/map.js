@@ -4,16 +4,37 @@ MissionIntelApp.Map = function (app) {
     //////////////////////////////////////////////////////////////////////////
     ///////// function to handle markers being clicked by a user
     //////////////////////////////////////////////////////////////////////////
+    var popup = new ol.Overlay({
+      element: document.getElementById('popup')
+    });
     function onMarkerClick(browserEvent) {
+
+        var element = popup.getElement();
         var coordinate = browserEvent.coordinate;
         var pixel = map.getPixelFromCoordinate(coordinate);
         map.forEachFeatureAtPixel(pixel, function (feature) {
+
+            console.log(feature.values_);
             if (feature.getProperties().SIDC) {
+
+                // $(element).popover('destroy');
+                $(element).popover('dispose')
+                popup.setPosition(coordinate);
+                $(element).popover({
+                  placement: 'top',
+                  animation: false,
+                  html: true,
+                  content: '<p>' + feature.values_.type + '</p>'
+                  // content: '<p>The location you clicked was:</p><code>' + feature.values_.type + '</code>'
+                });
+                $(element).popover('show');
+
                 localStorage.removeItem('currentUnit');
                 localStorage.setItem('currentUnit', JSON.stringify(feature.values_));
                 console.log(feature.values_);
                 console.log(feature.getProperties().SIDC);
             }
+
         });
     }
 
@@ -198,7 +219,7 @@ MissionIntelApp.Map = function (app) {
     map.addLayer(_group);
     map.addLayer(aircraftLayer);
     map.addLayer(streamLayer);
-
+    map.addOverlay(popup);
     //////////////////////////////////////////////////////////////////////////
     ///////// INTERACT WHEN A USER CLICKS A MARKER
     //////////////////////////////////////////////////////////////////////////
