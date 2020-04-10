@@ -21,7 +21,7 @@ MissionIntelApp.Map = function (app) {
     ///////// UPDATE MARKERS
     //////////////////////////////////////////////////////////////////////////
     function updateMap(source) {
-        
+
         let ratio = window.devicePixelRatio || 2;
         let collection = [];
 
@@ -134,7 +134,6 @@ MissionIntelApp.Map = function (app) {
     this.update = function (source) {
 
         var e = JSON.parse(localStorage.getItem('dcsData'));
-        console.log('updated');
         updateMap(e);
     };
 

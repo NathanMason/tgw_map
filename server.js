@@ -142,7 +142,6 @@ function toGeoJSON(dcsData) {
 
     serverObject.units.forEach(function (unit) {
 
-            console.log(unit);
             let side = '0';
             let markerColor = 'rgb(252, 246, 127)';
 
@@ -157,6 +156,7 @@ function toGeoJSON(dcsData) {
 
             // make a SIDC Object to store all values, so that we can override these as needed
             let lookup = SIDCtable[unit.type];
+
             // Check if this unit's type is defined in the table
             if (!lookup) {
     			console.log("unit type:" + unit.type + "is missing from the SIDCtable! "); // we dump a console log and then set into the else, this should basically make a default item unless i'm mistaken.
@@ -210,7 +210,6 @@ function toGeoJSON(dcsData) {
 }
 
 function receiveDCSData(dcsData) {
-    console.log('sending from server');
     let geoJSONData = toGeoJSON(dcsData)
     for (let connection in wsConnections)
         wsConnections[connection].sendText(JSON.stringify(geoJSONData));
@@ -288,7 +287,6 @@ app.post('/api/dcs/slmod/update', (req, res) => {
   } else { res.end('pass') }
 
 });
-
 
 // start the process to retrieve DCS packets
 DCSDataRetriever(receiveDCSData);
