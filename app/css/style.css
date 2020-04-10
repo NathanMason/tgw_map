@@ -1,5 +1,7 @@
 /* HTML TAGS */
-
+.ol-attribution {
+    display: none;
+}
 .dataSideBar {
     height: 100vh;
     position: fixed;

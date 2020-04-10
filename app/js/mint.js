@@ -1,4 +1,44 @@
 var MissionIntelApp = function() {
+    /* VARIABLES */
+
+
+    /* APP-WIDE FUNCTIONS */
+    this.get = function(el) {
+        get(el);
+        return el;
+    };
+
+    this.makeDraggable = function(id) {
+        makeDraggable(id);
+        return id;
+    };
+
+    this.moveDraggable = function(e) {
+        moveDraggable(e);
+    };
+
+    this.destroyDraggable = function() {
+        destroyDraggable();
+    };
+
+    this.getJSON = function(url, data, callback) {
+      getJSON(url, data, callback);
+    }
+
+    function makeDraggable(elem) {
+        selected = elem;
+        x_elem = x_pos - selected.offsetLeft;
+        y_elem = y_pos - selected.offsetTop;
+    }
+
+    function moveDraggable(e) {
+        x_pos = document.all ? window.event.clientX : e.pageX;
+        y_pos = document.all ? window.event.clientY : e.pageY;
+        if (selected !== null) {
+            selected.style.left = (x_pos - x_elem) + 'px';
+            selected.style.top = (y_pos - y_elem) + 'px';
+        }
+    }
 
     //////////////////////////////////////////////////////////////////////////
     ///////// ENCODE THE DATA
@@ -43,6 +83,12 @@ var MissionIntelApp = function() {
     ///////// initialize the map - this calls map.js
     //////////////////////////////////////////////////////////////////////////
     var map = new MissionIntelApp.Map(this);
+
+    //////////////////////////////////////////////////////////////////////////
+    ///////// UI initialize
+    //////////////////////////////////////////////////////////////////////////
+    var navigation = new MissionIntelApp.SiteNavigation(this);
+    this.siteNavigation = navigation;
 
     //////////////////////////////////////////////////////////////////////////
     ///////// call the socket and store new received data then update the map.

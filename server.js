@@ -42,11 +42,11 @@ app.use(bodyParser.json({limit:CONFIG.getPostJsonSizeLimit()}));
 //////////////////////////////////////////////////////////////////////////
 ///////// server folders
 //////////////////////////////////////////////////////////////////////////
-//app.use('/js', express.static(path.join(__dirname, '/views/js')));  // robs stats site, move this ASAP into our angular site
-//app.use('/css', express.static(path.join(__dirname, '/views/css')));  // robs stats site, move this ASAP into our angular site
-//app.use('/json_viewer', express.static(__dirname + '/node_modules/jquery.json-viewer/json-viewer/'));  // robs stats site, move this ASAP into our angular site
-//app.use('/assets', express.static(path.join(__dirname, '/views/assets')));  // robs stats site, move this ASAP into our angular site
-//app.set('view engine', 'ejs');  // robs stats site, move this ASAP into our angular site
+app.use('/js', express.static(path.join(__dirname, '/views/js')));  // robs stats site, move this ASAP into our angular site
+app.use('/css', express.static(path.join(__dirname, '/views/css')));  // robs stats site, move this ASAP into our angular site
+app.use('/json_viewer', express.static(__dirname + '/node_modules/jquery.json-viewer/json-viewer/'));  // robs stats site, move this ASAP into our angular site
+app.use('/assets', express.static(path.join(__dirname, '/views/assets')));  // robs stats site, move this ASAP into our angular site
+app.set('view engine', 'ejs');  // robs stats site, move this ASAP into our angular site
 
 app.use('/', express.static(__dirname + '/app'));
 app.use('/app', express.static(__dirname + '/app'));
@@ -141,6 +141,8 @@ function toGeoJSON(dcsData) {
     });
 
     serverObject.units.forEach(function (unit) {
+
+            console.log(unit);
             let side = '0';
             let markerColor = 'rgb(252, 246, 127)';
 
@@ -183,7 +185,6 @@ function toGeoJSON(dcsData) {
             for (var atr in _sidcObject) {
                 _sidc += _sidcObject[atr];
             }
-
             // Add unit to the feature collection
             featureCollection.push({
                 lat: _.get(unit, 'lat'),
@@ -209,7 +210,8 @@ function toGeoJSON(dcsData) {
 }
 
 function receiveDCSData(dcsData) {
-    let geoJSONData = toGeoJSON(dcsData);
+    console.log('sending from server');
+    let geoJSONData = toGeoJSON(dcsData)
     for (let connection in wsConnections)
         wsConnections[connection].sendText(JSON.stringify(geoJSONData));
 }

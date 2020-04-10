@@ -30,6 +30,8 @@
             ///////// HANDLE NEW DATA SENT THROUGH THE SOCKET
             //////////////////////////////////////////////////////////////////////////
             this.onmessage = function(evt) {
+                console.log(evt);
+                console.log('on message');
                 localStorage.clear(); // clear old unit data from localStorage
                 localStorage.setItem('dcsData', JSON.stringify(evt.data)); // add new unit data to localStorage
                 dataCallback(); // send

@@ -8,20 +8,20 @@ MissionIntelApp.Map = function (app) {
         var coordinate = browserEvent.coordinate;
         var pixel = map.getPixelFromCoordinate(coordinate);
         map.forEachFeatureAtPixel(pixel, function (feature) {
-
             if (feature.getProperties().SIDC) {
                 localStorage.removeItem('currentUnit');
                 localStorage.setItem('currentUnit', JSON.stringify(feature.values_));
+                console.log(feature.values_);
+                console.log(feature.getProperties().SIDC);
             }
-
         });
     }
-
 
     //////////////////////////////////////////////////////////////////////////
     ///////// UPDATE MARKERS
     //////////////////////////////////////////////////////////////////////////
     function updateMap(source) {
+        
         let ratio = window.devicePixelRatio || 2;
         let collection = [];
 
@@ -105,7 +105,12 @@ MissionIntelApp.Map = function (app) {
         //////////////////////////////////////////////////////////////////////////
         ///////// LOOP OVER ALL NEW MARKERS
         //////////////////////////////////////////////////////////////////////////
+
         [].forEach.call(collection, function (obj) {
+
+
+            var set = false;
+
             let exists;
             // If there is a layer with an ID equal to SOURCE then this layer exists and we will add the marker to this layer
             _group.getLayers().forEach(function (layer) {
@@ -144,6 +149,7 @@ MissionIntelApp.Map = function (app) {
     ///////// LAYER GROUP SETUP
     //////////////////////////////////////////////////////////////////////////
     let _group = new ol.layer.Group;
+    let aircraftLayer = new ol.layer.Group;
 
     //////////////////////////////////////////////////////////////////////////
     ///////// MAP LAYERS
@@ -153,12 +159,14 @@ MissionIntelApp.Map = function (app) {
         source: new ol.source.Vector(),
         fallThrough: true
     });
+
+
+
     var mapLayer = new ol.layer.Tile({
         id: 'map',
         preload: 4,
         fallThrough: true,
-
-    source: new ol.source.TileJSON({
+        source: new ol.source.TileJSON({
             url: 'http://api.tiles.mapbox.com/v4/mapbox.dark.json?access_token=pk.eyJ1Ijoic2d0dGVkIiwiYSI6ImNpdWZ1bmZ0OTAwMWoyem5uaGl4a2s0ejIifQ.aqtpdqUySGs1lrPbtITp0g',
             crossOrigin: 'anonymous'
         })
@@ -189,6 +197,7 @@ MissionIntelApp.Map = function (app) {
     );
     map.addLayer(mapLayer);
     map.addLayer(_group);
+    map.addLayer(aircraftLayer);
     map.addLayer(streamLayer);
 
     //////////////////////////////////////////////////////////////////////////
@@ -196,4 +205,21 @@ MissionIntelApp.Map = function (app) {
     //////////////////////////////////////////////////////////////////////////
     map.on('singleclick', onMarkerClick);
 
+
+    // --> map filters
+    function toggleLayer(layerName) {
+        layerName.setVisible((!layerName.getVisible()));
+    }
+
+    document.getElementById("map-filters-awacs").onclick = function (element) {
+        document.getElementById("map-filters-awacs").classList.toggle("enabled-map-menu-object");
+        document.getElementById("map-filters-awacs").classList.toggle("disabled-map-menu-object");
+        toggleLayer(_group);
+    };
+
+    document.getElementById("map-filters-planned").onclick = function (element) {
+        document.getElementById("map-filters-planned").classList.toggle("enabled-map-menu-object");
+        document.getElementById("map-filters-planned").classList.toggle("disabled-map-menu-object");
+        toggleLayer(plannedLayer);
+    };
 }

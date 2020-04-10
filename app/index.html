@@ -26,10 +26,16 @@
             <div class="navigation-container" style="-moz-user-select: none;">
                 <ul class="navigation nav-root">
                     <li class="mint-logo">RED IBERIA <small>v.1.0a</small></li>
-                    <!-- <li id="clock" class="clock" style="float: right;"></li> -->
+                    <li id="clock" class="clock" style="float: right;"></li>
                 </ul>
             </div>
-
+            <div id="map-filters-container" class="map-menu-container map-menu-filters-pos">
+                <ul id="map-filters">
+                    <li id="map-filters-header" class="map-menu-header cursor-move">Sources:</li>
+                    <li id="map-filters-awacs" class="map-menu-object cursor-pointer enabled-map-menu-object">AWACS</li>
+                    <li id="map-filters-planned" class="map-menu-object cursor-pointer enabled-map-menu-object">Planned</li>
+                </ul>
+            </div>
             <div id="div-map" class="div-map"></div>
 
             <!--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -47,6 +53,7 @@
             <script src="js/map.js"></script>
             <script src="js/session.js"></script>
             <script src="js/marker.js"></script>
+            <script src="js/ui.js"></script>
 
         </body>
 </html>
