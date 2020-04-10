@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" ng-app="redIberia">
+<html lang="en">
         <head>
             <meta charset="utf-8">
             <base href="/">
@@ -12,10 +12,16 @@
             <meta charset="UTF-8" />
 
             <title>RED IBERIA</title>
+            <script>
+                window.addEventListener("load", function() {
 
+                    var app = new MissionIntelApp();
+
+                });
+            </script>
         </head>
 
-        <body class="ng-cloak" ng-cloak>
+        <body class="ng-cloak">
 
             <div class="navigation-container" style="-moz-user-select: none;">
                 <ul class="navigation nav-root">
@@ -24,21 +30,7 @@
                 </ul>
             </div>
 
-            <div ng-view="" class="view" ng-cloak ></div>
-
-
-            <!--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-            	 jQuery
-            -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-->
-            <!-- <script src="js/jquery.min.js"></script> -->
-            <!-- <script src="js/popper.min.js"></script> -->
-            <!--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-            	 BOWER AND NODE_MODULES
-            -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-->
-            <script src="./scripts/angular/angular.min.js"></script>
-            <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular-sanitize.min.js"></script>
-            <script src="./scripts/angular-route/angular-route.js"></script>
-            <script src="js/app.js"></script>
+            <div id="div-map" class="div-map"></div>
 
             <!--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
             	 CORE FILES
@@ -47,21 +39,14 @@
             <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/build/ol.js" type="text/javascript"></script>
             <script src="https://d3js.org/d3.v4.min.js"></script>
             <script src="./scripts/milsymbol/dist/milsymbol.js"></script>
-
             <!--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-            	 CONTROLLERS
+            	 jQuery
             -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-->
-             <script src="/components/main/main.js"></script>
-
-             <!--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-             	 FACTORIES
-             -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-->
-              <!-- <script src="/factories/mint.js"></script> -->
-              <!-- <script src="/factories/map.js"></script> -->
-              <!-- <script src="/factories/session.js"></script> -->
-              <!-- <script src="/factories/marker.js"></script> -->
-              <!-- <script src="/factories/dcsStream.js"></script> -->
-
+            <script src="js/jquery.min.js"></script>
+            <script src="js/mint.js"></script>
+            <script src="js/map.js"></script>
+            <script src="js/session.js"></script>
+            <script src="js/marker.js"></script>
 
         </body>
 </html>

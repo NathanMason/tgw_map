@@ -42,14 +42,14 @@ app.use(bodyParser.json({limit:CONFIG.getPostJsonSizeLimit()}));
 //////////////////////////////////////////////////////////////////////////
 ///////// server folders
 //////////////////////////////////////////////////////////////////////////
-app.use('/js', express.static(path.join(__dirname, 'views/js')));  // robs stats site, move this ASAP into our angular site
-app.use('/css', express.static(path.join(__dirname, 'views/css')));  // robs stats site, move this ASAP into our angular site
-app.use('/json_viewer', express.static(__dirname + '/node_modules/jquery.json-viewer/json-viewer/'));  // robs stats site, move this ASAP into our angular site
-app.use('/assets', express.static(path.join(__dirname, 'views/assets')));  // robs stats site, move this ASAP into our angular site
-app.set('view engine', 'ejs');  // robs stats site, move this ASAP into our angular site
+//app.use('/js', express.static(path.join(__dirname, '/views/js')));  // robs stats site, move this ASAP into our angular site
+//app.use('/css', express.static(path.join(__dirname, '/views/css')));  // robs stats site, move this ASAP into our angular site
+//app.use('/json_viewer', express.static(__dirname + '/node_modules/jquery.json-viewer/json-viewer/'));  // robs stats site, move this ASAP into our angular site
+//app.use('/assets', express.static(path.join(__dirname, '/views/assets')));  // robs stats site, move this ASAP into our angular site
+//app.set('view engine', 'ejs');  // robs stats site, move this ASAP into our angular site
 
 app.use('/', express.static(__dirname + '/app'));
-app.use('/appJS', express.static(__dirname + '/app/js'));
+app.use('/app', express.static(__dirname + '/app'));
 app.use('/scripts', express.static(__dirname + '/node_modules'));
 
 //////////////////////////////////////////////////////////////////////////
