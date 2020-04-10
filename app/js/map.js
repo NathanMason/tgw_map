@@ -24,7 +24,7 @@ MissionIntelApp.Map = function (app) {
                   placement: 'top',
                   animation: false,
                   html: true,
-                  content: '<p>' + feature.values_.type + '</p>'
+                  content: '<p>' + feature.getProperties().missionname + '<br>' + feature.getProperties().displayname + '</p>' //We don't store the items in SIDC but as their own properties so we need to grab them that way.
                   // content: '<p>The location you clicked was:</p><code>' + feature.values_.type + '</code>'
                 });
                 $(element).popover('show');
@@ -76,6 +76,15 @@ MissionIntelApp.Map = function (app) {
                     }
                     fixedalt = "";
             }
+			else
+			{
+				   if (dground == false)
+                    {
+                        ptype = "";
+						utype = "";
+                    }
+                    fixedalt = "";
+			}
 
             //////////////////////////////////////////////////////////////////////////
             ///////// CREATE MARKER DATA
