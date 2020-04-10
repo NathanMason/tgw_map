@@ -205,7 +205,9 @@ MissionIntelApp.Map = function (app) {
     map.on('singleclick', onMarkerClick);
 
 
-    // --> map filters
+    //////////////////////////////////////////////////////////////////////////
+    ///////// MAP FILTERS
+    //////////////////////////////////////////////////////////////////////////
     function toggleLayer(layerName) {
         layerName.setVisible((!layerName.getVisible()));
     }
@@ -216,9 +218,29 @@ MissionIntelApp.Map = function (app) {
         toggleLayer(_group);
     };
 
-    document.getElementById("map-filters-planned").onclick = function (element) {
-        document.getElementById("map-filters-planned").classList.toggle("enabled-map-menu-object");
-        document.getElementById("map-filters-planned").classList.toggle("disabled-map-menu-object");
+    document.getElementById("map-filters-ground").onclick = function (element) {
+        document.getElementById("map-filters-ground").classList.toggle("enabled-map-menu-object");
+        document.getElementById("map-filters-ground").classList.toggle("disabled-map-menu-object");
         toggleLayer(plannedLayer);
     };
+
+    document.getElementById("map-filters-air").onclick = function (element) {
+        document.getElementById("map-filters-air").classList.toggle("enabled-map-menu-object");
+        document.getElementById("map-filters-air").classList.toggle("disabled-map-menu-object");
+        toggleLayer(plannedLayer);
+    };
+
+    document.getElementById("map-filters-human").onclick = function (element) {
+        document.getElementById("map-filters-human").classList.toggle("enabled-map-menu-object");
+        document.getElementById("map-filters-human").classList.toggle("disabled-map-menu-object");
+        toggleLayer(plannedLayer);
+    };
+
+    document.getElementById("map-filters-naval").onclick = function (element) {
+        document.getElementById("map-filters-naval").classList.toggle("enabled-map-menu-object");
+        document.getElementById("map-filters-naval").classList.toggle("disabled-map-menu-object");
+        toggleLayer(plannedLayer);
+    };
+
+
 }
