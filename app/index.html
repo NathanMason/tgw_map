@@ -33,10 +33,10 @@
             <div id="map-filters-container" class="map-menu-container map-menu-filters-pos">
                 <ul id="map-filters">
                     <li id="map-filters-header" class="map-menu-header cursor-move">Filter:</li>
-                    <li id="map-filters-awacs" class="map-menu-object cursor-pointer enabled-map-menu-object">AWACS</li>
+                    <li id="map-filters-all" class="map-menu-object cursor-pointer enabled-map-menu-object">All</li>
                     <li id="map-filters-ground" class="map-menu-object cursor-pointer enabled-map-menu-object">Ground Units</li>
-                    <li id="map-filters-air" class="map-menu-object cursor-pointer enabled-map-menu-object">Air Units</li>
-                    <li id="map-filters-human" class="map-menu-object cursor-pointer enabled-map-menu-object">Human Units</li>
+                    <li id="map-filters-air" class="map-menu-object cursor-pointer enabled-map-menu-object">Fixed Wing Units</li>
+                    <li id="map-filters-heli" class="map-menu-object cursor-pointer enabled-map-menu-object">Rotary Units</li>
                     <li id="map-filters-naval" class="map-menu-object cursor-pointer enabled-map-menu-object">Naval Units</li>
                 </ul>
             </div>
@@ -72,6 +72,18 @@
             <script type="text/javascript">
             $(function () {
               $('[data-toggle="popover"]').popover()
+            })
+            $(function () {
+              $('[data-toggle="popover"]').popover()
+            })
+
+            function destroyInfoBox(){
+                $("#popup").popover("hide");
+            }
+
+
+            $('.popover-dismiss').popover({
+              trigger: 'focus'
             })
             </script>
 

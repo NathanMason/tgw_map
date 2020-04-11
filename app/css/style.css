@@ -676,7 +676,7 @@ body {
 
 .popover {
     background: rgba(0,0,0,0.5);
-    width: 180px;
+    width: 280px;
 }
 .popover-body {
     background: rgba(0,0,0,0.5);
@@ -697,4 +697,32 @@ body {
     bottom: 1px;
     border-width: .5rem .5rem 0;
     background: rgba(0,0,0,0.5);
+}
+.mint-logo {
+    width: 272px !important;
+}
+.popover .table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #fff;
+    font-size: 11px;
+}
+.popover .table td, .popover .table th {
+    padding: 5px;
+    vertical-align: top;
+    border-top: none;
+}
+.close {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    opacity: .5;
+    position: relative;
+    top: -8px;
+}
+.close:hover {
+    color: #efefef !important;
+    text-decoration: none;
 }

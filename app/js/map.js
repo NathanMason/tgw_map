@@ -14,19 +14,52 @@ MissionIntelApp.Map = function (app) {
         var pixel = map.getPixelFromCoordinate(coordinate);
         map.forEachFeatureAtPixel(pixel, function (feature) {
 
-            console.log(feature.values_);
-            if (feature.getProperties().SIDC) {
+            var unitIMG = function(e){
+                console.log(e);
+                switch(e) {
+                  case 'F-16C_50':
+                        return '../assets/img/f16.jpg'
+                        break;
+                    case 'CVN-74 John C. Stennis':
+                        return '../assets/img/stennis.jpg'
+                        break;
+                    case 'CG 1164 Moskva':
+                        return '../assets/img/CG 1164 Moskva.jpg'
+                        break;
+                    case 'CG 1164 Moskva':
+                        return '../assets/img/KC135MPRS.jpg'
+                        break;
+                    case 'FA-18C_hornet':
+                        return '../assets/img/FA-18C_hornet.jpg'
+                        break;
+                    case 'su-25t':
+                        return '../assets/img/su-25t.jpg'
+                        break;
+                  default:
+                    return '../assets/img/default.jpg'
+                }
+            };
 
+
+            console.log(feature);
+            if (feature.getProperties().SIDC) {
+                var pilot;
+                if (feature.getProperties().name == '') {
+                    pilot = 'AI'
+                } else {
+                    pilot = feature.getProperties().name
+                }
+                console.log(element);
                 // $(element).popover('destroy');
                 $(element).popover('dispose')
                 popup.setPosition(coordinate);
                 $(element).popover({
                   placement: 'top',
-                  animation: true,
                   html: true,
-                  title: feature.getProperties().displayname,
-                  content: '<p>' + feature.getProperties().missionname + '<br>' + feature.getProperties().displayname + '</p>' //We don't store the items in SIDC but as their own properties so we need to grab them that way.
-                  // content: '<p>The location you clicked was:</p><code>' + feature.values_.type + '</code>'
+                  trigger: 'focus',
+                  sanitize: false,
+                  title: feature.getProperties().displayname + '<button type="button" id="close" class="close" onclick="destroyInfoBox()">&times;</button>',
+                  content:"<img style='width: 100%' src='" + unitIMG(feature.getProperties().displayname) + "'><table class='table'><tbody><tr><td>Pilot: </td><td>" + pilot + "</td></tr><tr><td>Callsign: </td><td>" + feature.getProperties().missionname + "</td></tr><tr><td>Pilot: </td><td>" + pilot + "</td></tr><tr><td>Unit Type: </td><td>" + feature.getProperties().type + "</td></tr></tbody></table>"
                 });
                 $(element).popover('show');
 
@@ -34,6 +67,9 @@ MissionIntelApp.Map = function (app) {
                 localStorage.setItem('currentUnit', JSON.stringify(feature.values_));
                 console.log(feature.values_);
                 console.log(feature.getProperties().SIDC);
+            } else {
+                console.log('no');
+                $(element).popover('dispose')
             }
 
         });
@@ -132,16 +168,18 @@ MissionIntelApp.Map = function (app) {
         ///////// REMOVE EXISITNG/OLD MARKERS.LAYERS
         //////////////////////////////////////////////////////////////////////////
         _group.getLayers().clear(true);
+        _GroundUnits.getLayers().clear(true);
+        _HeliUnits.getLayers().clear(true);
+        _AirUnits.getLayers().clear(true);
+        _ShipUnits.getLayers().clear(true);
+        _OtherUnits.getLayers().clear(true);
 
         //////////////////////////////////////////////////////////////////////////
         ///////// LOOP OVER ALL NEW MARKERS
         //////////////////////////////////////////////////////////////////////////
 
         [].forEach.call(collection, function (obj) {
-
-
             var set = false;
-
             let exists;
             // If there is a layer with an ID equal to SOURCE then this layer exists and we will add the marker to this layer
             _group.getLayers().forEach(function (layer) {
@@ -150,16 +188,94 @@ MissionIntelApp.Map = function (app) {
                     layer.getSource().addFeature(obj);
                 }
             });
-
+            _GroundUnits.getLayers().forEach(function (layer) {
+                if (layer.getProperties().id == obj.getProperties().source) {
+                    exists = true;
+                    layer.getSource().addFeature(obj);
+                }
+            });
+            _HeliUnits.getLayers().forEach(function (layer) {
+                if (layer.getProperties().id == obj.getProperties().source) {
+                    exists = true;
+                    layer.getSource().addFeature(obj);
+                }
+            });
+            _AirUnits.getLayers().forEach(function (layer) {
+                if (layer.getProperties().id == obj.getProperties().source) {
+                    exists = true;
+                    layer.getSource().addFeature(obj);
+                }
+            });
+            _ShipUnits.getLayers().forEach(function (layer) {
+                if (layer.getProperties().id == obj.getProperties().source) {
+                    exists = true;
+                    layer.getSource().addFeature(obj);
+                }
+            });
+            _OtherUnits.getLayers().forEach(function (layer) {
+                if (layer.getProperties().id == obj.getProperties().source) {
+                    exists = true;
+                    layer.getSource().addFeature(obj);
+                }
+            });
+            console.log(exists);
             // .. if there is not - then we have to make it, add a source and then add the marker
             if (!exists) {
+
+                // if unit is a ground unit
+                if (obj.getProperties().category == 'Ground') {
+                    let grp = _GroundUnits.getLayers();
+                    grp.push(new ol.layer.Vector({
+                        id: obj.getProperties().source,
+                        source: new ol.source.Vector()
+                    }));
+                    _GroundUnits.setLayers(grp);
+                }
+
+                // if unit is a heli unit
+                 if (obj.getProperties().category.category == 'Heli') {
+
+                    let grp = _HeliUnits.getLayers();
+                    grp.push(new ol.layer.Vector({
+                        id: obj.getProperties().source,
+                        source: new ol.source.Vector()
+                    }));
+                    _HeliUnits.setLayers(grp);
+                }
+
+                // if unit is a ship unit
+                if (obj.getProperties().category == 'Ship') {
+
+                    let grp = _ShipUnits.getLayers();
+                    grp.push(new ol.layer.Vector({
+                        id: obj.getProperties().source,
+                        source: new ol.source.Vector()
+                    }));
+                    _ShipUnits.setLayers(grp);
+                }
+
+                // if unit is a Air unit
+                if (obj.getProperties().category  == 'Air') {
+
+                    let grp = _AirUnits.getLayers();
+                    grp.push(new ol.layer.Vector({
+                        id: obj.getProperties().source,
+                        source: new ol.source.Vector()
+                    }));
+                    _AirUnits.setLayers(grp);
+                }
+
+
                 let grp = _group.getLayers();
                 grp.push(new ol.layer.Vector({
-                    id: obj.getProperties().source,
-                    source: new ol.source.Vector()
-                }));
+                        id: obj.getProperties().source,
+                        source: new ol.source.Vector()
+                    }));
                 _group.setLayers(grp);
+
+
             }
+
         });
     }
     this.update = function (source) {
@@ -179,6 +295,11 @@ MissionIntelApp.Map = function (app) {
     ///////// LAYER GROUP SETUP
     //////////////////////////////////////////////////////////////////////////
     let _group = new ol.layer.Group;
+    let _GroundUnits = new ol.layer.Group;
+    let _HeliUnits = new ol.layer.Group;
+    let _AirUnits = new ol.layer.Group;
+    let _ShipUnits = new ol.layer.Group;
+    let _OtherUnits = new ol.layer.Group;
     let aircraftLayer = new ol.layer.Group;
 
     //////////////////////////////////////////////////////////////////////////
@@ -189,8 +310,6 @@ MissionIntelApp.Map = function (app) {
         source: new ol.source.Vector(),
         fallThrough: true
     });
-
-
 
     var mapLayer = new ol.layer.Tile({
         id: 'map',
@@ -227,7 +346,11 @@ MissionIntelApp.Map = function (app) {
     );
     map.addLayer(mapLayer);
     map.addLayer(_group);
-    map.addLayer(aircraftLayer);
+    map.addLayer(_GroundUnits);
+    map.addLayer(_HeliUnits);
+    map.addLayer(_AirUnits);
+    map.addLayer(_ShipUnits);
+    map.addLayer(_OtherUnits);
     map.addLayer(streamLayer);
     map.addOverlay(popup);
     //////////////////////////////////////////////////////////////////////////
@@ -243,34 +366,34 @@ MissionIntelApp.Map = function (app) {
         layerName.setVisible((!layerName.getVisible()));
     }
 
-    document.getElementById("map-filters-awacs").onclick = function (element) {
-        document.getElementById("map-filters-awacs").classList.toggle("enabled-map-menu-object");
-        document.getElementById("map-filters-awacs").classList.toggle("disabled-map-menu-object");
+    document.getElementById("map-filters-all").onclick = function (element) {
+        document.getElementById("map-filters-all").classList.toggle("enabled-map-menu-object");
+        document.getElementById("map-filters-all").classList.toggle("disabled-map-menu-object");
         toggleLayer(_group);
     };
 
     document.getElementById("map-filters-ground").onclick = function (element) {
         document.getElementById("map-filters-ground").classList.toggle("enabled-map-menu-object");
         document.getElementById("map-filters-ground").classList.toggle("disabled-map-menu-object");
-        toggleLayer(plannedLayer);
+        toggleLayer(_GroundUnits);
     };
 
     document.getElementById("map-filters-air").onclick = function (element) {
         document.getElementById("map-filters-air").classList.toggle("enabled-map-menu-object");
         document.getElementById("map-filters-air").classList.toggle("disabled-map-menu-object");
-        toggleLayer(plannedLayer);
+        toggleLayer(_AirUnits);
     };
 
-    document.getElementById("map-filters-human").onclick = function (element) {
-        document.getElementById("map-filters-human").classList.toggle("enabled-map-menu-object");
-        document.getElementById("map-filters-human").classList.toggle("disabled-map-menu-object");
-        toggleLayer(plannedLayer);
+    document.getElementById("map-filters-heli").onclick = function (element) {
+        document.getElementById("map-filters-heli").classList.toggle("enabled-map-menu-object");
+        document.getElementById("map-filters-heli").classList.toggle("disabled-map-menu-object");
+        toggleLayer(_HeliUnits);
     };
 
     document.getElementById("map-filters-naval").onclick = function (element) {
         document.getElementById("map-filters-naval").classList.toggle("enabled-map-menu-object");
         document.getElementById("map-filters-naval").classList.toggle("disabled-map-menu-object");
-        toggleLayer(plannedLayer);
+        toggleLayer(_ShipUnits);
     };
 
 
