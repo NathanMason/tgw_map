@@ -8,7 +8,7 @@ MissionIntelApp.Map = function (app) {
       element: document.getElementById('popup')
     });
     function onMarkerClick(browserEvent) {
-
+        var title;
         var element = popup.getElement();
         var coordinate = browserEvent.coordinate;
         var pixel = map.getPixelFromCoordinate(coordinate);
@@ -22,8 +22,9 @@ MissionIntelApp.Map = function (app) {
                 popup.setPosition(coordinate);
                 $(element).popover({
                   placement: 'top',
-                  animation: false,
+                  animation: true,
                   html: true,
+                  title: feature.getProperties().displayname,
                   content: '<p>' + feature.getProperties().missionname + '<br>' + feature.getProperties().displayname + '</p>' //We don't store the items in SIDC but as their own properties so we need to grab them that way.
                   // content: '<p>The location you clicked was:</p><code>' + feature.values_.type + '</code>'
                 });

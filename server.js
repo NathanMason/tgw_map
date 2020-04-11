@@ -8,7 +8,7 @@ const webport = 8080; // our webport
 const serverlisten = 8081; // our pass through for the webserver
 const showsides = true; // do we show sides.
 const onesecond = 1000; // how many milliseconds to 1 second.
-const refreshrate = 3; // our server refresh rate.
+const refreshrate = 5; // our server refresh rate.
 
 //////////////////////////////////////////////////////////////////////////
 ///////// THRIDPARTY PACKAGES
@@ -270,6 +270,7 @@ function DCSDataRetriever(dataCallback) {
     }, refreshrate * onesecond);
 
 };
+
 //API for WEB View
 app.post('/api/web/fetch', (req, res) => {
   LOGGER.log('WEB Server Stats Requested: Sending the JSON object', i);
