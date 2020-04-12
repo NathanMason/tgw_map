@@ -97,24 +97,28 @@ var server = websocket.createServer(function (conn) {
 //         coalition: 1,
 //         lat: 41.827466027798,
 //         lon: 41.812401984863,
-//		   alt: 0190.021939291321,
-//		   missionname: 'unit #1231' // this is the name IN the mission editor possibly player name as well.
+//  		   alt: 0190.021939291321,
+//         heading: 90,
+//         speed: 421,
+//	  	   missionname: 'unit #1231' // this is the name IN the mission editor possibly player name as well.
 //         playername: '', // this is empty but we should utalize it along with the player stats.
-//		   displayname: 'BTR-80 APC',
-//		   Category: 'Ground'
+//         displayname: 'BTR-80 APC',
+//  		   Category: 'Ground'
 //  },
 //////////////////////////////////////////////////////////////////////////
 _.set(serverObject, 'unitParse', function (unit) {
     if (_.get(unit, 'action') == 'C') {
         serverObject.units[unit.unitID] = {
-                unitID: _.get(unit, 'unitID'),
-                type: _.get(unit, 'type'),
-                coalition: _.get(unit, 'coalition'),
-                lat: _.get(unit, 'lat'),
-                lon: _.get(unit, 'lon'),
+        unitID: _.get(unit, 'unitID'),
+        type: _.get(unit, 'type'),
+        coalition: _.get(unit, 'coalition'),
+        lat: _.get(unit, 'lat'),
+        lon: _.get(unit, 'lon'),
 				alt: _.get(unit, 'alt'),
+        heading: _.get(unit,'heading'),
+        speed:_.get(unit,'speed'),
 				missionname: _.get(unit, 'missionname'),
-                playername: _.get(unit, 'playername', ''),
+        playername: _.get(unit, 'playername', ''),
 				displayname: _.get(unit, 'displayname'),
 				category: _.get(unit, 'category')
         };
@@ -123,7 +127,9 @@ _.set(serverObject, 'unitParse', function (unit) {
         if (_.get(serverObject.units[unit.unitID], 'lat', null) !== null && _.get(serverObject.units[unit.unitID], 'lon', null) !== null) {
             _.set(serverObject.units[unit.unitID], 'lat', _.get(unit, 'lat'));
             _.set(serverObject.units[unit.unitID], 'lon', _.get(unit, 'lon'));
-			_.set(serverObject.units[unit.unitID], 'alt', _.get(unit, 'alt'));
+			      _.set(serverObject.units[unit.unitID], 'alt', _.get(unit, 'alt'));
+            _.set(serverObject.units[unit.unitID], 'heading', _.get(unit, 'heading'));
+            _.set(serverObject.units[unit.unitID], 'speed', _.get(unit, 'speed'));
         }
     }
     if (_.get(unit, 'action') == 'D') {
@@ -189,7 +195,9 @@ function toGeoJSON(dcsData) {
             featureCollection.push({
                 lat: _.get(unit, 'lat'),
                 lon: _.get(unit, 'lon'),
-    			alt: _.get(unit, 'alt'),
+    			      alt: _.get(unit, 'alt'),
+                heading: _.get(unit,'heading'),
+                speed:_.get(unit,'speed'),
                 monoColor: markerColor,
                 SIDC: _sidc + '***',
                 side: _.get(unit, 'coalition'),
@@ -197,9 +205,9 @@ function toGeoJSON(dcsData) {
                 source: _.get(unit, 'category'),
                 type: _.get(unit, 'type'),
                 name: _.get(unit, 'playername', ''),
-    			missionname: _.get(unit, 'missionname'),
-    			displayname: _.get(unit, 'displayname'),
-    			category: _.get(unit, 'category')
+    			      missionname: _.get(unit, 'missionname'),
+    			      displayname: _.get(unit, 'displayname'),
+    			      category: _.get(unit, 'category')
             });
 
     });
