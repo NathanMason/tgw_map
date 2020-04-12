@@ -180,7 +180,7 @@ let SIDC = {
 		modifier1: '-',
 		modifier2: '-'
 	},
-	'F-14A' : {
+	'F-14B' : {
 		codingScheme : 'S',
 		affiliation: 'U',
 		battleDimension: 'A',
@@ -189,7 +189,7 @@ let SIDC = {
 		modifier1: '-',
 		modifier2: '-'
 	},
-	'F-14B' : {
+	'F-15C' : {
 		codingScheme : 'S',
 		affiliation: 'U',
 		battleDimension: 'A',
@@ -272,6 +272,15 @@ let SIDC = {
 	},
 	'F-86F Sabre' : {
 	codingScheme : 'S',
+		affiliation: 'U',
+		battleDimension: 'A',
+		status: '-',
+		functionID: 'MFF--',
+		modifier1: '-',
+		modifier2: '-'
+	},
+	'FA-18A' : {
+		codingScheme : 'S',
 		affiliation: 'U',
 		battleDimension: 'A',
 		status: '-',
@@ -2385,7 +2394,7 @@ let SIDC = {
 		modifier1: '-',
 		modifier2: '-'
 	},
-	
+
 };
 
 
