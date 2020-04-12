@@ -194,12 +194,12 @@ function toGeoJSON(dcsData) {
                 SIDC: _sidc + '***',
                 side: _.get(unit, 'coalition'),
                 size: 30,
-                source: 'awacs',
+                source: _.get(unit, 'category'),
                 type: _.get(unit, 'type'),
                 name: _.get(unit, 'playername', ''),
     			missionname: _.get(unit, 'missionname'),
     			displayname: _.get(unit, 'displayname'),
-    			category: _.get(unit, 'category',)
+    			category: _.get(unit, 'category')
             });
 
     });

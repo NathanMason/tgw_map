@@ -726,3 +726,8 @@ body {
     color: #efefef !important;
     text-decoration: none;
 }
+.popover .arrow {
+
+    display: none;
+
+}
