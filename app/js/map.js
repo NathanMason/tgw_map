@@ -13,6 +13,14 @@ MissionIntelApp.Map = function (app) {
     var popup = new ol.Overlay({
       element: document.getElementById('popup')
     });
+
+    function degrees_to_radians(degrees)
+    {
+      var pi = Math.PI;
+      return degrees * (pi/180);
+    }
+
+
     function onMarkerClick(browserEvent) {
         var title;
         var element = popup.getElement();
@@ -173,7 +181,11 @@ MissionIntelApp.Map = function (app) {
             var style = f.getStyle(),
                 image = style.getImage(),
                 rotation = image.getRotation();
-                image.setRotation(setHeadingAsInt); // this isn't correct.
+                console.log('Hey Rotation is:' + rotation);
+                console.log('Hey heading in radians is:' + degrees_to_radians(setHeadingAsInt))
+                image.setRotation(degrees_to_radians(setHeadingAsInt)); // this isn't correct.
+                rotation = image.getRotation();
+                console.log('Hey Rotation is now:' + rotation);
             //////////////////////////////////////////////////////////////////////////
             ///////// PUSH NEW MARKER TO MARKER COLLECTION
             //////////////////////////////////////////////////////////////////////////
