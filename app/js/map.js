@@ -79,10 +79,32 @@ MissionIntelApp.Map = function (app) {
                 featureProjection: 'EPSG:3857'
             })
         });
-
+        var count_air = 0;
+        var count_ground = 0;
+        var count_heli = 0;
+        var count_ship = 0;
+        var count_unknown = 0;
         // Generate Markers
         s.forEachFeature(function (f) {
-
+            if (f.getProperties().category == 'Air')
+            {
+              count_air += 1;
+            }
+            else if (f.getProperties().category == 'Heli')
+            {
+              count_heli += 1;
+            }
+            else if (f.getProperties().category == 'Ground')
+            {
+              count_ground += 1;
+            }
+            else if (f.getProperties().category == 'Ship')
+            {
+              count_ship += 1;
+            }
+            else {
+              count_unknown += 1;
+            }
             // store our altitude etc.
             var fixedalt = f.getProperties().alt;
             var utype = f.getProperties().missionname;
@@ -122,8 +144,15 @@ MissionIntelApp.Map = function (app) {
                 }
 
             }
-
-             console.log(f.getProperties());
+            if (f.getProperties().type == 'KC135MPRS')
+            {
+              console.log(f.getProperties());
+            }
+            if (f.getProperties().type == 'KC-135')
+            {
+              console.log(f.getProperties());
+            }
+             //console.log(f.getProperties());
 
             var mySymbol = new ms.Symbol(
                   'SUG--------***', // just feed it this we don't care anymore
@@ -147,7 +176,7 @@ MissionIntelApp.Map = function (app) {
             //////////////////////////////////////////////////////////////////////////
             ///////// SET MARKERS STYLE
             //////////////////////////////////////////////////////////////////////////
-            console.log(f.getProperties().source);
+            //console.log(f.getProperties().source);
                 // convert heading to string
                 var headingFromDCS = f.getProperties().heading;
                 var setHeadingAsInt = Math.floor(headingFromDCS); // we just need to floor it to an int
@@ -155,7 +184,7 @@ MissionIntelApp.Map = function (app) {
                 // this isn't rrequired
                 //var string = headingFromDCS.toString();
                 // console.log(string);
-                console.log(f.getProperties().heading);
+                //console.log(f.getProperties().heading);
                 //
                 //var convertHeading = string.substring(0, 3);
                 // console.log(convertHeading);
@@ -182,7 +211,7 @@ MissionIntelApp.Map = function (app) {
                 image = style.getImage(),
                 rotation = image.getRotation();
                 image.setRotation(degrees_to_radians(setHeadingAsInt)); // this isn't correct.
-                
+
             //////////////////////////////////////////////////////////////////////////
             ///////// PUSH NEW MARKER TO MARKER COLLECTION
             //////////////////////////////////////////////////////////////////////////
@@ -229,7 +258,7 @@ MissionIntelApp.Map = function (app) {
 
 
         _group.getLayers().forEach(function (layer) {
-                console.log(layer);
+                // console.log(layer);
 
                 if (layer.getProperties().id == 'Ground') {
                     if (hide_GroundUnits == false) {
@@ -273,8 +302,13 @@ MissionIntelApp.Map = function (app) {
 
 
         })
-
-
+      /*
+        console.log('air:' + count_air);
+        console.log('heli:' + count_heli);
+        console.log('ground:' + count_ground);
+        console.log('ship:' + count_ship);
+        console.log('unknown:' + count_unknown);
+      */
     }
     this.update = function (source) {
 

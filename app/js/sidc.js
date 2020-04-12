@@ -532,47 +532,47 @@ let SIDC = {
 		},
 	// MBTs
 	'Challenger2' : {
-		icon : 'ground.png',
+		icon : 'tank.png',
 		unitimage: 'default.jpg'
 		},
 	'Leclerc' : {
-		icon : 'ground.png',
+		icon : 'tank.png',
 		unitimage: 'default.jpg'
 		},
 	'Leopard1A3' : {
-		icon : 'ground.png',
+		icon : 'tank.png',
 		unitimage: 'default.jpg'
 		},
 	'Leopard-2' : {
-		icon : 'ground.png',
+		icon : 'tank.png',
 		unitimage: 'default.jpg'
 		},
 	'M-60' : {
-		icon : 'ground.png',
+		icon : 'tank.png',
 		unitimage: 'default.jpg'
 		},
 	'M1128 Stryker MGS' : {
-		icon : 'ground.png',
+		icon : 'tank.png',
 		unitimage: 'default.jpg'
 		},
 	'M-1 Abrams' : {
-		icon : 'ground.png',
+		icon : 'tank.png',
 		unitimage: 'default.jpg'
 		},
 	'T-55' : {
-		icon : 'ground.png',
+		icon : 'tank.png',
 		unitimage: 'default.jpg'
 		},
 	'T-72B' : {
-		icon : 'ground.png',
+		icon : 'tank.png',
 		unitimage: 'default.jpg'
 		},
 	'T-80UD' : {
-		icon : 'ground.png',
+		icon : 'tank.png',
 		unitimage: 'default.jpg'
 		},
 	'T-90' : {
-		icon : 'ground.png',
+		icon : 'tank.png',
 		unitimage: 'default.jpg'
 		},
 	// SAM & AAA
