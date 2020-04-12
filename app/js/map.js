@@ -146,11 +146,49 @@ MissionIntelApp.Map = function (app) {
                 convertSize = 65
             }
 
+            var getIconIMG = function(e, i){
+
+                switch(e) {
+                    case 'Air':
+
+                        if (i == 'rgb(255, 88, 88)') {
+                            return '../../assets/img/red-jet.png'
+                            break;
+                        } else {
+                            return '../../assets/img/blue-jet.png'
+                            break;
+                        }
+
+                    case 'Ground':
+                    if (i == 'rgb(255, 88, 88)') {
+                        return '../../assets/img/red-ground.png'
+                        break;
+                    } else {
+                        return '../../assets/img/blue-ground.png'
+                        break;
+                    }
+
+                    case 'Ship':
+                            if (i == 'rgb(255, 88, 88)') {
+                                return '../../assets/img/red-navy.png'
+                                break;
+                            } else {
+                                return '../../assets/img/blue-navy.png'
+                                break;
+                            }
+                  default:
+                    return '../../assets/img/blue-jet.png'
+                }
+
+            }
+
+            console.log(f.getProperties());
             var mySymbol = new ms.Symbol(
                     f.getProperties().SIDC,
                     {uniqueDesignation: f.getProperties().name},
                     {size: convertSize * ratio},
                     {infoColor: "white" },
+                    {heading: f.getProperties().source.heading},
                     {infoFields: false},
                     {platformType: ptype },
                     {altitudeDepth : fixedalt },
@@ -167,18 +205,40 @@ MissionIntelApp.Map = function (app) {
             //////////////////////////////////////////////////////////////////////////
             ///////// SET MARKERS STYLE
             //////////////////////////////////////////////////////////////////////////
+            console.log(f.getProperties().source);
+
+
+                // convert heading to string
+                var headingFromDCS = f.getProperties().heading;
+                var string = headingFromDCS.toString();
+                // console.log(string);
+                console.log(f.getProperties().heading);
+                //
+                var convertHeading = string.substring(0, 3);
+                // console.log(convertHeading);
+                //
+                var setHeadingAsInt = Number(convertHeading);
+                // console.log(setHeadingAsInt);
+
+
+
             f.setStyle(new ol.style.Style({
                 image: new ol.style.Icon(({
                     scale: 0.4,
                     anchor: [mySymbol.getAnchor().x, mySymbol.getAnchor().y],
                     anchorXUnits: 'pixels',
+                    rotateWithView: true,
                     anchorYUnits: 'pixels',
                     imgSize: [Math.floor(mySymbol.getSize().width), Math.floor(mySymbol.getSize().height)],
-                    img: (myCanvas)
+                    // img: (myCanvas),
+                    src: getIconIMG(f.getProperties().source, f.getProperties().monoColor)
 
                 }))
             }));
-
+            var style = f.getStyle(),
+                image = style.getImage(),
+                rotation = image.getRotation();
+            image.setRotation(setHeadingAsInt);
             //////////////////////////////////////////////////////////////////////////
             ///////// PUSH NEW MARKER TO MARKER COLLECTION
             //////////////////////////////////////////////////////////////////////////

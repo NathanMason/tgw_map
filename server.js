@@ -107,6 +107,7 @@ var server = websocket.createServer(function (conn) {
 //  },
 //////////////////////////////////////////////////////////////////////////
 _.set(serverObject, 'unitParse', function (unit) {
+
     if (_.get(unit, 'action') == 'C') {
         serverObject.units[unit.unitID] = {
         unitID: _.get(unit, 'unitID'),
@@ -114,20 +115,20 @@ _.set(serverObject, 'unitParse', function (unit) {
         coalition: _.get(unit, 'coalition'),
         lat: _.get(unit, 'lat'),
         lon: _.get(unit, 'lon'),
-				alt: _.get(unit, 'alt'),
+		alt: _.get(unit, 'alt'),
         heading: _.get(unit,'heading'),
         speed:_.get(unit,'speed'),
-				missionname: _.get(unit, 'missionname'),
+		missionname: _.get(unit, 'missionname'),
         playername: _.get(unit, 'playername', ''),
-				displayname: _.get(unit, 'displayname'),
-				category: _.get(unit, 'category')
+		displayname: _.get(unit, 'displayname'),
+		category: _.get(unit, 'category')
         };
     }
     if (_.get(unit, 'action') == 'U') {
         if (_.get(serverObject.units[unit.unitID], 'lat', null) !== null && _.get(serverObject.units[unit.unitID], 'lon', null) !== null) {
             _.set(serverObject.units[unit.unitID], 'lat', _.get(unit, 'lat'));
             _.set(serverObject.units[unit.unitID], 'lon', _.get(unit, 'lon'));
-			      _.set(serverObject.units[unit.unitID], 'alt', _.get(unit, 'alt'));
+			_.set(serverObject.units[unit.unitID], 'alt', _.get(unit, 'alt'));
             _.set(serverObject.units[unit.unitID], 'heading', _.get(unit, 'heading'));
             _.set(serverObject.units[unit.unitID], 'speed', _.get(unit, 'speed'));
         }
@@ -175,6 +176,7 @@ function toGeoJSON(dcsData) {
     					_sidcObject[atr] = lookup[atr];
     			}
     		}
+            console.log(unit);
             // set showsides == false if we don't want this.
     		if (showsides == true) {
     			if (unit.coalition == 1) {
