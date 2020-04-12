@@ -50,10 +50,12 @@ MissionIntelApp.Map = function (app) {
             console.log(feature);
             if (feature.getProperties().SIDC) {
                 var pilot;
+                var cheading = Math.floor(feature.getProperties().heading);
+                var cspeed = Math.round(feature.getProperties().speed);
                 if (feature.getProperties().name == '') {
-                    pilot = 'AI'
+                    pilot = 'AI';
                 } else {
-                    pilot = feature.getProperties().name
+                    pilot = feature.getProperties().name;
                 }
                 console.log(element);
                 // $(element).popover('destroy');
@@ -65,7 +67,7 @@ MissionIntelApp.Map = function (app) {
                   trigger: 'focus',
                   sanitize: false,
                   title: feature.getProperties().displayname + '<button type="button" id="close" class="close" onclick="destroyInfoBox()">&times;</button>',
-                  content:"<img style='width: 100%' src='" + unitIMG(feature.getProperties().displayname) + "'><table class='table'><tbody><tr><td>Pilot: </td><td>" + pilot + "</td></tr><tr><td>Callsign: </td><td>" + feature.getProperties().missionname + "</td></tr><tr><td>Pilot: </td><td>" + pilot + "</td></tr><tr><td>Unit Type: </td><td>" + feature.getProperties().type + "</td></tr></tbody></table>"
+                  content:"<img style='width: 100%' src='" + unitIMG(feature.getProperties().displayname) + "'><table class='table'><tbody><tr><td>Pilot: </td><td>" + pilot + "</td></tr><tr><td>Callsign: </td><td>" + feature.getProperties().missionname + "</td></tr><tr><td>Pilot: </td><td>" + pilot + "</td></tr><tr><td>Unit Type: </td><td>" + feature.getProperties().displayname + "</td></tr><tr><td>Speed: </td><td>" + cspeed + "</td></tr><tr><td>heading: </td><td>" + cheading + "</td></tr></tbody></table>"
                 });
                 $(element).popover('show');
 
@@ -222,14 +224,17 @@ MissionIntelApp.Map = function (app) {
             console.log(f.getProperties().source);
                 // convert heading to string
                 var headingFromDCS = f.getProperties().heading;
-                var string = headingFromDCS.toString();
+                var setHeadingAsInt = Math.floor(headingFromDCS); // we just need to floor it to an int
+
+                // this isn't rrequired
+                //var string = headingFromDCS.toString();
                 // console.log(string);
                 console.log(f.getProperties().heading);
                 //
-                var convertHeading = string.substring(0, 3);
+                //var convertHeading = string.substring(0, 3);
                 // console.log(convertHeading);
                 //
-                var setHeadingAsInt = Number(convertHeading);
+                //var setHeadingAsInt = Number(convertHeading);
                 // console.log(setHeadingAsInt);
 
 
@@ -250,7 +255,7 @@ MissionIntelApp.Map = function (app) {
             var style = f.getStyle(),
                 image = style.getImage(),
                 rotation = image.getRotation();
-            image.setRotation(setHeadingAsInt);
+            image.setRotation(setHeadingAsInt); // this isn't correct.
             //////////////////////////////////////////////////////////////////////////
             ///////// PUSH NEW MARKER TO MARKER COLLECTION
             //////////////////////////////////////////////////////////////////////////

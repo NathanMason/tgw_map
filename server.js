@@ -79,10 +79,14 @@ _.set(serverObject, 'requestArray', []);
 // Spits out a debug to either console or to file or both.
 function rdebug(debuginfo,consolelogging = true,filelogging = true)
 {
+  var dcDate = new Date();
+  var datestring = dcDate.toISOString();
+  //console.log('dcseconds:'+ dcseconds);
   if ((consolelogging == true) || (forceconsole == true)){
-    console.log(debuginfo);
+    console.log(datestring + ':' + debuginfo);
   }
   if ((filelogging == true) || (forcelogfile == true)){
+    fs.appendFile(logfile,datestring + ":",'utf8', function(err){ if (err) throw err; });
     fs.appendFile(logfile,util.format(debuginfo) + "\n",'utf8',
     // callback function
     function(err) {  if (err) throw err; }
