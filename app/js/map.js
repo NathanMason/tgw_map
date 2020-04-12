@@ -181,11 +181,8 @@ MissionIntelApp.Map = function (app) {
             var style = f.getStyle(),
                 image = style.getImage(),
                 rotation = image.getRotation();
-                console.log('Hey Rotation is:' + rotation);
-                console.log('Hey heading in radians is:' + degrees_to_radians(setHeadingAsInt))
                 image.setRotation(degrees_to_radians(setHeadingAsInt)); // this isn't correct.
-                rotation = image.getRotation();
-                console.log('Hey Rotation is now:' + rotation);
+                
             //////////////////////////////////////////////////////////////////////////
             ///////// PUSH NEW MARKER TO MARKER COLLECTION
             //////////////////////////////////////////////////////////////////////////
