@@ -1,2400 +1,1066 @@
 let SIDC = {
 	'default' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: '-----',
-		modifier1: '-',
-		modifier2: '-'
+		icon : 'unknown.png',
+		unitimage: 'default.jpg'
 	},
 	// FIXED WING
 	'AJS37' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
 	},
 	'AV8BNA' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'A-10A' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
-	'F-16C' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
-	'Fa-18C' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'A-10C' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'A-50' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'An-26B' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'An-30M' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'B-1B' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'B-52H' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'Bf-109K-4' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'C-101CC' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'C-101EB' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'C-130' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MHCM--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'c130.png',
+		unitimage: 'default.jpg'
+		},
 	'C-17A' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MHCH--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'c17.png',
+		unitimage: 'default.jpg'
+		},
 	'E-2C' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFRW--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'E-3A' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFRW--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'F-14A' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'F-14B' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'F-15C' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'F-15E' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'F-16A MLU' : {
-	codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'F-16A' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'f16.jpg'
+		},
 	'F-16C bl.50' : {
-	codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'f16.jpg'
+		},
 	'F-16C_50' : {
-	codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'f16.jpg'
+		},
 	'F-16C bl.52d' : {
-	codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'f16.jpg'
+		},
 	'F-5E-3' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'F-5E' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'F-86F Sabre' : {
-	codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'FA-18A' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'FA-18C_hornet.jpg'
+		},
 	'FA-18C' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'FA-18C_hornet.jpg'
+		},
 	'FA-18C_hornet' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'FA-18C_Hornet.jpg'
+		},
 	'FW-190D9' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'prop.png',
+		unitimage: 'default.jpg'
+		},
 	'FW-190A8' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'prop.png',
+		unitimage: 'default.jpg'
+		},
 	'SpitfireLFMkIX' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'prop.png',
+		unitimage: 'default.jpg'
+		},
 	'SpitfireLFMkIXCW' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'prop.png',
+		unitimage: 'default.jpg'
+		},
 	'Hawk' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'IL-76MD' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'IL-78M' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'KC-135' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFK---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'kc135.png',
+		unitimage: 'default.jpg'
+		},
 	'KC135MPRS' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFK---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'kc135mprs.png',
+		unitimage: 'KC135MPRS.jpg'
+		},
 	'L-39C' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'L-39ZA' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'M-2000C' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'MiG-15bis' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'MiG-19P' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'MiG-21Bis' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'MiG-23MLD' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'MiG-25PD' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'MiG-25RBT' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'MiG-27K' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'MiG-29A' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'MiG-29G' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'MiG-29S' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'MiG-31' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'Mirage 2000-5' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'P-51D' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'P-51D-30-NA' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'RQ-1A Predator' : {
-	codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'S-3B Tanker' : {
-	codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'S-3B' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFS--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'Su-17M4' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFB--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'Su-24M' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFB--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'Su-24MR' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFR--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'Su-25' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'Su-25T' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'Su-25TM' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'Su-27' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'Su-30' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'JF-17' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'Su-33' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'Su-34' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'TF-51D' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'Tornado GR4' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'Tornado IDS' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'Tu-142' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFB--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'Tu-160' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFB--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'Tu-22M3' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFB--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'Tu-95MS' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFB--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'Yak-40' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'Yak-52' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFT--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	'I-16' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'jet.png',
+		unitimage: 'default.jpg'
+		},
 	// ROTARY WING
 	'AH-1W' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MHA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'heli.png',
+		unitimage: 'default.jpg'
+		},
 	'AH-64A' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MHA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'heli.png',
+		unitimage: 'default.jpg'
+		},
 	'AH-64D' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MHA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'heli.png',
+		unitimage: 'default.jpg'
+		},
 	'CH-47D' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MHC--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'heli.png',
+		unitimage: 'default.jpg'
+		},
 	'CH-53E' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MHC--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'heli.png',
+		unitimage: 'default.jpg'
+		},
 	'Ka-27' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MHS--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'heli.png',
+		unitimage: 'default.jpg'
+		},
 	'Ka-50' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MHA---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'heli.png',
+		unitimage: 'default.jpg'
+		},
 	'Mi-24V' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MHA---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'heli.png',
+		unitimage: 'default.jpg'
+		},
 	'Mi-26' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MHC--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'heli.png',
+		unitimage: 'default.jpg'
+		},
 	'Mi-28N' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MHA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'heli.png',
+		unitimage: 'default.jpg'
+		},
 	'Mi-8MT' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MHC--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'heli.png',
+		unitimage: 'default.jpg'
+		},
 	'OH-58D' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MHR--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'heli.png',
+		unitimage: 'default.jpg'
+		},
 	'SA342M' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MHA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'heli.png',
+		unitimage: 'default.jpg'
+		},
 	'SA342L' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MHA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'heli.png',
+		unitimage: 'default.jpg'
+		},
 	'SA342Minigun' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MHA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'heli.png',
+		unitimage: 'default.jpg'
+		},
 	'SA342Mistral' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MHA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'heli.png',
+		unitimage: 'default.jpg'
+		},
 	'SH-60B' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MHU--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'heli.png',
+		unitimage: 'default.jpg'
+		},
 	'UH-1H' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MHU--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'heli.png',
+		unitimage: 'default.jpg'
+		},
 	'UH-60A' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'A',
-		status: '-',
-		functionID: 'MHU--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'heli.png',
+		unitimage: 'default.jpg'
+		},
 	// VEHICLES : IFVs
 	'AAV7' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'BMD-1' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'BMP-1' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'BMP-2' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'BMP-3' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Boman' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'BRDM-2' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'BTR-80' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'BTR_D' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Bunker' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Cobra' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'LAV-25' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'M1043 HMMWV Armament' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'M1045 HMMWV TOW' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'M1126 Stryker ICV' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'M-113' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'M1134 Stryker ATGM' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'M-2 Bradley' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Marder' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'MCV-80' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'MTLB' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Paratrooper RPG-16' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Paratrooper AKS-74' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Sandbox' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Soldier AK' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Infantry AK' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Soldier M249' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Soldier M4' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Soldier M4 GRG' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Soldier RPG' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'TPZ' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCII-',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	// MBTs
 	'Challenger2' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Leclerc' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Leopard1A3' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Leopard-2' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'M-60' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'M1128 Stryker MGS' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'M-1 Abrams' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'T-55' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'T-72B' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'T-80UD' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'T-90' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	// SAM & AAA
 	'2S6 Tunguska' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Kub 2P25 ln' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'5p73 s-125 ln' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'S-300PS 5P85C ln' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'S-300PS 5P85D ln' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'SA-11 Buk LN 9A310M1' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Osa 9A33 ln' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Tor 9A331' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Strela-10M3' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Strela-1 9P31' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'SA-11 Buk CC 9S470M1' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'S_75M_Volhov' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'SA-8 Osa LD 9T217' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Patriot AMG' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Patriot ECS' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Gepard' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Hawk pcp' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'SA-18 Igla manpad' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'SA-18 Igla comm' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Igla manpad INS' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'SA-18 Igla-S manpad' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'SA-18 Igla-S comm' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Vulcan' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Hawk ln' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'M48 Chaparral' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'M6 Linebacker' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Patriot ln' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'M1097 Avenger' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Patriot EPP' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Patriot cp' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
+	'rapier_fsa_launcher' : {
+			icon : 'ground.png',
+			unitimage: 'default.jpg'
+		},
 	'Roland ADS' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'S-300PS 54K6 cp' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Stinger manpad GRG' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Stinger manpad dsr' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Stinger comm dsr' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Stinger manpad' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Stinger comm' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'ZSU-23-4 Shilka' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'ZU-23 Emplacement Closed' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'ZU-23 Emplacement' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'ZU-23 Closed Insurgent' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Ural-375 ZU-23 Insurgent' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'ZU-23 Insurgent' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Ural-375 ZU-23' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	// RADAR
 	'1L13 EWR' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'ESR--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Kub 1S91 str' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'ESR--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'S-300PS 40B6M tr' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'ESR--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'S-300PS 40B6MD sr' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'ESR--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'55G6 EWR' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'ESR--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'S-300PS 64H6E sr' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'ESR--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'SA-11 Buk SR 9S18M1' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'ESR--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Dog Ear radar' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'ESR--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Hawk tr' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'ESR--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Hawk sr' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'ESR--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Patriot str' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'ESR--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Hawk cwar' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'ESR--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'p-19 s-125 sr' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'ESR--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Roland Radar' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'ESR--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'rapier_fsa_blindfire_radar' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'ESR--',
-		modifier1: '-',
-		modifier2: '-'
-	},
-	'rapier_fsa_launcher' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'rapier_fsa_optical_tracker_unit' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'ESR--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'snr s-125 tr' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'ESR--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'SNR_75V' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UCD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	// UNARMED
 	'Ural-4320 APA-5D' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'ATMZ-5' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'ATZ-10' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'GAZ-3307' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'GAZ-3308' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'GAZ-66' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'M978 HEMTT Tanker' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'HEMTT TFFT' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'IKARUS Bus' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'KAMAZ Truck' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'LAZ Bus' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Hummer' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'M 818' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'MAZ-6303' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Predator GCS' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Predator TrojanSpirit' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Suidae' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Tigr_233036' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Trolley bus' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'UAZ-469' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Ural ATsP-6' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Ural-375 PBU' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Ural-375' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Ural-4320-31' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'Ural-4320T' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'VAZ Car' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'ZiL-131 APA-80' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'SKP-11' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'ZIL-131 KUNG' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	'ZIL-4331' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
+		},
 	// Sea
 	'Stennis' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'S',
-		status: '-',
-		functionID: 'CLCV--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'navy.png',
+		unitimage: 'stennis.jpg'
+		},
 	'Higgins_boat' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'S',
-		status: '-',
-		functionID: 'CP---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'snavy.png',
+		unitimage: 'default.jpg'
+		},
 	'LHA_Tarawa' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'S',
-		status: '-',
-		functionID: 'CALA--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'navy.png',
+		unitimage: 'default.jpg'
+		},
 	'LST_Mk2' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'S',
-		status: '-',
-		functionID: 'CALC---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'snavy.png',
+		unitimage: 'default.jpg'
+		},
 	'PERRY' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'S',
-		status: '-',
-		functionID: 'CLDD---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'snavy.png',
+		unitimage: 'default.jpg'
+		},
 	'speedboat' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'S',
-		status: '-',
-		functionID: 'CP---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'snavy.png',
+		unitimage: 'default.jpg'
+		},
 	'TICONDEROG' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'S',
-		status: '-',
-		functionID: 'CLCC--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'snavy.png',
+		unitimage: 'default.jpg'
+		},
 	'USS_Samuel_Chase' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'S',
-		status: '-',
-		functionID: 'CALS--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'snavy.png',
+		unitimage: 'default.jpg'
+		},
 	'VINSON' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'S',
-		status: '-',
-		functionID: 'CLCV--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'navy.png',
+		unitimage: 'default.jpg'
+		},
 	'ALBATROS' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'S',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'snavy.png',
+		unitimage: 'default.jpg'
+		},
 	'Dry-cargo ship-1' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'S',
-		status: '-',
-		functionID: 'XMC---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'snavy.png',
+		unitimage: 'default.jpg'
+		},
 	'Dry-cargo ship-2' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'S',
-		status: '-',
-		functionID: 'XMC---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'snavy.png',
+		unitimage: 'default.jpg'
+		},
 	'ELNYA' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'S',
-		status: '-',
-		functionID: 'XMO---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'snavy.png',
+		unitimage: 'default.jpg'
+		},
 	'KILO' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'U',
-		status: '-',
-		functionID: 'SN----',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'snavy.png',
+		unitimage: 'default.jpg'
+		},
 	'KUZNECOW' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'S',
-		status: '-',
-		functionID: 'CLCV--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'navy.png',
+		unitimage: 'default.jpg'
+		},
 	'MOLNIYA' : {
 		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'S',
-		status: '-',
-		functionID: 'CLFF--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'snavy.png',
+		unitimage: 'default.jpg'
+		},
 	'MOSCOW' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'S',
-		status: '-',
-		functionID: 'CLCC--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'snavy.png',
+		unitimage: 'CG 1164 Moskva.jpg'
+		},
 	'NEUSTRASH' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'S',
-		status: '-',
-		functionID: 'CLDD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'snavy.png',
+		unitimage: 'default.jpg'
+		},
 	'PIOTR' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'S',
-		status: '-',
-		functionID: 'CLCC--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'snavy.png',
+		unitimage: 'default.jpg'
+		},
 	'REZKY' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'S',
-		status: '-',
-		functionID: 'CLDD--',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'snavy.png',
+		unitimage: 'default.jpg'
+		},
 	'SOM' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'U',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
-	},
+		icon : 'snavy.png',
+		unitimage: 'default.jpg'
+		},
 	'ZWEZDNY' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'S',
-		status: '-',
-		functionID: 'SN---',
-		modifier1: '-',
-		modifier2: '-'
-	},
-
+		icon : 'snavy.png',
+		unitimage: 'default.jpg'
+		},
 	// FARPS
 	'FARP' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
 	},
 	'FARP Ammo Dump Coating' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
 	},
 	'ammo_cargo' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
 	},
 	'container_cargo' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
 	},
 	'barrels_cargo' : {
-		codingScheme : 'S',
-		affiliation: 'U',
-		battleDimension: 'G',
-		status: '-',
-		functionID: 'UU---',
-		modifier1: '-',
-		modifier2: '-'
+		icon : 'ground.png',
+		unitimage: 'default.jpg'
 	},
-
 };
 
 

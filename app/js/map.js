@@ -19,34 +19,6 @@ MissionIntelApp.Map = function (app) {
         var coordinate = browserEvent.coordinate;
         var pixel = map.getPixelFromCoordinate(coordinate);
         map.forEachFeatureAtPixel(pixel, function (feature) {
-
-            var unitIMG = function(e){
-                console.log(e);
-                switch(e) {
-                  case 'F-16C_50':
-                        return '../assets/img/f16.jpg'
-                        break;
-                    case 'CVN-74 John C. Stennis':
-                        return '../assets/img/stennis.jpg'
-                        break;
-                    case 'CG 1164 Moskva':
-                        return '../assets/img/CG 1164 Moskva.jpg'
-                        break;
-                    case 'CG 1164 Moskva':
-                        return '../assets/img/KC135MPRS.jpg'
-                        break;
-                    case 'FA-18C_hornet':
-                        return '../assets/img/FA-18C_hornet.jpg'
-                        break;
-                    case 'su-25t':
-                        return '../assets/img/su-25t.jpg'
-                        break;
-                  default:
-                    return '../assets/img/default.jpg'
-                }
-            };
-
-
             console.log(feature);
             if (feature.getProperties().SIDC) {
                 var pilot;
@@ -67,7 +39,7 @@ MissionIntelApp.Map = function (app) {
                   trigger: 'focus',
                   sanitize: false,
                   title: feature.getProperties().displayname + '<button type="button" id="close" class="close" onclick="destroyInfoBox()">&times;</button>',
-                  content:"<img style='width: 100%' src='" + unitIMG(feature.getProperties().displayname) + "'><table class='table'><tbody><tr><td>Pilot: </td><td>" + pilot + "</td></tr><tr><td>Callsign: </td><td>" + feature.getProperties().missionname + "</td></tr><tr><td>Pilot: </td><td>" + pilot + "</td></tr><tr><td>Unit Type: </td><td>" + feature.getProperties().displayname + "</td></tr><tr><td>Speed: </td><td>" + cspeed + "</td></tr><tr><td>heading: </td><td>" + cheading + "</td></tr></tbody></table>"
+                  content:"<img style='width: 100%' src='../assets/img/" + feature.getProperties().unitimage + "'><table class='table'><tbody><tr><td>Pilot: </td><td>" + pilot + "</td></tr><tr><td>Callsign: </td><td>" + feature.getProperties().missionname + "</td></tr><tr><td>Pilot: </td><td>" + pilot + "</td></tr><tr><td>Unit Type: </td><td>" + feature.getProperties().displayname + "</td></tr><tr><td>Speed: </td><td>" + cspeed + "</td></tr><tr><td>heading: </td><td>" + cheading + "</td></tr></tbody></table>"
                 });
                 $(element).popover('show');
 
@@ -114,102 +86,48 @@ MissionIntelApp.Map = function (app) {
                 fixedalt = fixedalt.toFixed(0);
                 fixedalt = fixedalt.toString() + "ft";
             }
-            else if (f.getProperties().category == 'Ship') {
-                    if (dground == false)
-                    {
-                        ptype = "";
-                    }
+            else if (f.getProperties().category == 'Ship')
+            {
                     fixedalt = "";
             }
-			else
-			{
-				   if (dground == false)
-                    {
-                        ptype = "";
-						utype = "";
-                    }
+			      else
+			      {
                     fixedalt = "";
-			}
+			      }
 
             //////////////////////////////////////////////////////////////////////////
             ///////// CREATE MARKER DATA
             //////////////////////////////////////////////////////////////////////////
-            var iconSize = {
-                "SHS-XMC-----***": 65, //ship
-                "SHG-UCA----***": 65, // ground
-                "SHA-MFF----***": 65 // air
-            };
             var ratio = window.devicePixelRatio;
             var sidc = f.getProperties().SIDC;
-            var convertSize = iconSize[sidc];
-            console.log(convertSize);
-
-            if (convertSize == undefined) {
-                convertSize = 65
-            }
-
-            var getIconIMG = function(e, i){
-
-                switch(e) {
-                    case 'Air':
-
-                        if (i == 'rgb(255, 88, 88)') {
-                            return '../../assets/img/red-jet.png'
-                            break;
-                        } else {
-                            return '../../assets/img/blue-jet.png'
-                            break;
-                        }
-
-                    case 'Ground':
-                    if (i == 'rgb(255, 88, 88)') {
-                        return '../../assets/img/red-ground.png'
-                        break;
-                    } else {
-                        return '../../assets/img/blue-ground.png'
-                        break;
-                    }
-
-                    case 'Ship':
-                            if (i == 'rgb(255, 88, 88)') {
-                              if (f.getProperties().type == 'KUZNECOW')
-                              {
-                                  return '../../assets/img/red-navy.png';
-                                  break;
-                              }
-                              else {
-                                return '../../assets/img/red-snavy.png';
-                                break;
-                              }
-                            } else {
-                                if (f.getProperties().type == 'Stennis')
-                                {
-                                return '../../assets/img/blue-navy.png'
-                                break;
-                              }
-                              else {
-                                return '../../assets/img/blue-snavy.png'
-                                break;
-                              }
-                            }
-                  default:
-                    return '../../assets/img/blue-jet.png'
+            var convertSize = 65; // just leave it at 65
+            //console.log(convertSize);
+            // we actually don't need e now, but we'll keep it just incase
+            // sets the icon basically
+            var getIconIMG = function(e, i, ic){
+                if (i == 'rgb(255, 88, 88)')
+                {
+                  return '../../assets/img/red-' + ic;
+                }
+                else {
+                  return '../../assets/img/blue-' + ic;
                 }
 
             }
 
-            console.log(f.getProperties());
+             console.log(f.getProperties());
+
             var mySymbol = new ms.Symbol(
-                    f.getProperties().SIDC,
-                    {uniqueDesignation: f.getProperties().name},
-                    {size: convertSize * ratio},
-                    {infoColor: "white" },
-                    {heading: f.getProperties().source.heading},
-                    {infoFields: false},
-                    {platformType: ptype },
-                    {altitudeDepth : fixedalt },
-                    {type : utype },
-                    {scale: convertSize * ratio}
+                  'SUG--------***', // just feed it this we don't care anymore
+                  {uniqueDesignation: f.getProperties().name},
+                  {size: convertSize * ratio},
+                  {infoColor: "white" },
+                  {heading: f.getProperties().source.heading},
+                  {infoFields: false},
+                  {platformType: ptype },
+                  {altitudeDepth : fixedalt },
+                  {type : utype },
+                  {scale: convertSize * ratio}
 
             );
 
@@ -248,14 +166,14 @@ MissionIntelApp.Map = function (app) {
                     anchorYUnits: 'pixels',
                     imgSize: [Math.floor(mySymbol.getSize().width), Math.floor(mySymbol.getSize().height)],
                     // img: (myCanvas),
-                    src: getIconIMG(f.getProperties().source, f.getProperties().monoColor)
+                    src: getIconIMG(f.getProperties().source, f.getProperties().monoColor,f.getProperties().icon)
 
                 }))
             }));
             var style = f.getStyle(),
                 image = style.getImage(),
                 rotation = image.getRotation();
-            image.setRotation(setHeadingAsInt); // this isn't correct.
+                image.setRotation(setHeadingAsInt); // this isn't correct.
             //////////////////////////////////////////////////////////////////////////
             ///////// PUSH NEW MARKER TO MARKER COLLECTION
             //////////////////////////////////////////////////////////////////////////

@@ -185,14 +185,8 @@ function toGeoJSON(dcsData) {
             let markerColor = 'rgb(252, 246, 127)';
 
             let _sidcObject = {};
-            _sidcObject["codingScheme"] = 'S';
-            _sidcObject["affiliation"] = 'U';
-            _sidcObject["battleDimension"] = 'G';
-            _sidcObject["status"] = '-';
-            _sidcObject["functionID"] = '-----';
-            _sidcObject["modifier1"] = '-';
-            _sidcObject["modifier2"] = '-';
-
+            _sidcObject["icon"] = 'unknown.jpg';
+            _sidcObject["unitimage"] = 'default.jpg';
             // make a SIDC Object to store all values, so that we can override these as needed
             let lookup = SIDCtable[unit.type];
 
@@ -220,11 +214,7 @@ function toGeoJSON(dcsData) {
     				_sidcObject["affiliation"] = 'F';
     			}
     		}
-            // Generate final SIDC string
-            let _sidc = "";
-            for (var atr in _sidcObject) {
-                _sidc += _sidcObject[atr];
-            }
+
             // Add unit to the feature collection
             featureCollection.push({
                 lat: _.get(unit, 'lat'),
@@ -233,7 +223,9 @@ function toGeoJSON(dcsData) {
                 heading: _.get(unit,'heading'),
                 speed:_.get(unit,'speed'),
                 monoColor: markerColor,
-                SIDC: _sidc + '***',
+                icon: _sidcObject["icon"],
+                unitimage: _sidcObject["unitimage"],
+                SIDC: _sidcObject,
                 side: _.get(unit, 'coalition'),
                 size: 30,
                 source: _.get(unit, 'category'),
