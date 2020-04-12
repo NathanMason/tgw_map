@@ -25,7 +25,7 @@ do
 		-- basically runs a function to add a unit into the cache or update it.
 		local function addUnit(unit, unitID, coalition, lat, lon, alt, action)
       -- stores dcs data.
-      local mooseunit = UNIT:Find(unit)
+      
 			local curUnit = {
         action = action,
         unitID = unitID
@@ -34,6 +34,8 @@ do
       if action == "C" or action == "U" then
         -- make a entry or find the entry in cachedb with the unit id. then build it
 				cacheDB[unitID] = {}
+				
+				local mooseunit = UNIT:Find(unit) -- this needs to be here moron so that the units actually ALIVE when we request it
         cacheDB[unitID].lat = lat
         cacheDB[unitID].lon = lon
 				cacheDB[unitID].alt = alt
