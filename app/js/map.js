@@ -413,10 +413,10 @@ MissionIntelApp.Map = function (app) {
         _group.getLayers().forEach(function (layer) {
 
             if (layer.getProperties().id == 'Ship') {
-                if (hide__ShipUnits == false) {
-                    hide__ShipUnits = true
+                if (hide_ShipUnits == false) {
+                    hide_ShipUnits = true
                 } else {
-                    hide__ShipUnits = false
+                    hide_ShipUnits = false
                 }
                 toggleLayer(layer);
             }
