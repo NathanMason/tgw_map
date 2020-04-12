@@ -9,7 +9,9 @@ const serverlisten = 8081; // our pass through for the webserver
 const showsides = true; // do we show sides.
 const onesecond = 1000; // how many milliseconds to 1 second.
 const refreshrate = 5; // our server refresh rate.
-
+var logfile = 'nodeserver.log'; // what do we set our log file for rdebug
+const forceconsole = false; // over rules local rdebug options and forces a console output
+const forcelogfile = false; // over rules local rdebug options and forces a file output
 //////////////////////////////////////////////////////////////////////////
 ///////// THRIDPARTY PACKAGES
 //////////////////////////////////////////////////////////////////////////
@@ -19,7 +21,9 @@ var express = require('express');
 var _ = require('lodash');
 var GeoJSON = require('geojson');
 var morgan = require('morgan')
-
+var fs = require('fs');
+var util = require('util');
+var log_stdout = process.stdout;
 //////////////////////////////////////////////////////////////////////////
 ///////// SET EXPRESS
 //////////////////////////////////////////////////////////////////////////
@@ -71,6 +75,21 @@ var serverObject = {};
 _.set(serverObject, 'units', []);
 _.set(serverObject, 'requestArray', []);
 
+
+// Spits out a debug to either console or to file or both.
+function rdebug(debuginfo,consolelogging = true,filelogging = true)
+{
+  if ((consolelogging == true) || (forceconsole == true)){
+    console.log(debuginfo);
+  }
+  if ((filelogging == true) || (forcelogfile == true)){
+    fs.appendFile(logfile,util.format(debuginfo) + "\n",'utf8',
+    // callback function
+    function(err) {  if (err) throw err; }
+  );
+  }
+}
+
 //////////////////////////////////////////////////////////////////////////
 ///////// SETUP AND CREATE SOCKET
 //////////////////////////////////////////////////////////////////////////
@@ -79,12 +98,12 @@ var websocket = require('nodejs-websocket');
 var server = websocket.createServer(function (conn) {
 
     let time = new Date();
-    console.log(time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds() + ' :: <- Client connected');
+    rdebug(time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds() + ' :: <- Client connected');
     wsConnections.push(conn);
     conn.on("close", function (code, reason) {
         wsConnections.splice(wsConnections.indexOf(conn), 1);
         time = new Date();
-        console.log(time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds() + ' :: -> Client disconnected');
+        rdebug(time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds() + ' :: -> Client disconnected');
     });
 });
 
@@ -107,35 +126,44 @@ var server = websocket.createServer(function (conn) {
 //  },
 //////////////////////////////////////////////////////////////////////////
 _.set(serverObject, 'unitParse', function (unit) {
-
     if (_.get(unit, 'action') == 'C') {
+        rdebug('Create Request for unit:' + unit.unitID,false,false);
         serverObject.units[unit.unitID] = {
-        unitID: _.get(unit, 'unitID'),
-        type: _.get(unit, 'type'),
-        coalition: _.get(unit, 'coalition'),
-        lat: _.get(unit, 'lat'),
-        lon: _.get(unit, 'lon'),
-		alt: _.get(unit, 'alt'),
-        heading: _.get(unit,'heading'),
-        speed:_.get(unit,'speed'),
-		missionname: _.get(unit, 'missionname'),
-        playername: _.get(unit, 'playername', ''),
-		displayname: _.get(unit, 'displayname'),
-		category: _.get(unit, 'category')
+          unitID: _.get(unit, 'unitID'),
+          type: _.get(unit, 'type'),
+          coalition: _.get(unit, 'coalition'),
+          lat: _.get(unit, 'lat'),
+          lon: _.get(unit, 'lon'),
+          alt: _.get(unit, 'alt'),
+          heading: _.get(unit,'heading'),
+          speed:_.get(unit,'speed'),
+          missionname: _.get(unit, 'missionname'),
+          playername: _.get(unit, 'playername', ''),
+          displayname: _.get(unit, 'displayname'),
+          category: _.get(unit, 'category')
         };
     }
     if (_.get(unit, 'action') == 'U') {
+        rdebug('Update reguested for unit:' + unit.unitID,false,false);
         if (_.get(serverObject.units[unit.unitID], 'lat', null) !== null && _.get(serverObject.units[unit.unitID], 'lon', null) !== null) {
             _.set(serverObject.units[unit.unitID], 'lat', _.get(unit, 'lat'));
             _.set(serverObject.units[unit.unitID], 'lon', _.get(unit, 'lon'));
-			_.set(serverObject.units[unit.unitID], 'alt', _.get(unit, 'alt'));
+      			_.set(serverObject.units[unit.unitID], 'alt', _.get(unit, 'alt'));
             _.set(serverObject.units[unit.unitID], 'heading', _.get(unit, 'heading'));
             _.set(serverObject.units[unit.unitID], 'speed', _.get(unit, 'speed'));
+            rdebug('Updated Info for unit:' + unit.unitID,false,false);
+            rdebug(serverObject.units[unit.unitID],false,false);
         }
     }
     if (_.get(unit, 'action') == 'D') {
-
-        delete serverObject.units[unit.unitID];
+        if (serverObject.units[unit.unitID] != null)
+        {
+          rdebug('Delete Request Sent for unit:' + unit.unitID + ',unit existed deleted');
+          delete serverObject.units[unit.unitID];
+        }
+        else {
+          rdebug('Delete Request Sent for unit' + unit.unitId + ',but unit was already delete',false,false);
+        }
     }
     return true;
 });
@@ -166,7 +194,7 @@ function toGeoJSON(dcsData) {
 
             // Check if this unit's type is defined in the table
             if (!lookup) {
-    			console.log("unit type:" + unit.type + "is missing from the SIDCtable! "); // we dump a console log and then set into the else, this should basically make a default item unless i'm mistaken.
+    			rdebug("unit type:" + unit.type + "is missing from the SIDCtable! ",true,true); // we dump a console log and then set into the else, this should basically make a default item unless i'm mistaken.
     			// plus it will give us a log of items we need to deal with over time.
     			//return;
     		}
@@ -176,7 +204,7 @@ function toGeoJSON(dcsData) {
     					_sidcObject[atr] = lookup[atr];
     			}
     		}
-            console.log(unit);
+        rdebug(unit,false,false);
             // set showsides == false if we don't want this.
     		if (showsides == true) {
     			if (unit.coalition == 1) {
@@ -239,7 +267,7 @@ function DCSDataRetriever(dataCallback) {
 
         const client = net.createConnection({host: ADDRESS, port: PORT}, () => {
             let time = new Date();
-            console.log(time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds() + ' :: Connected to DCS server!');
+            rdebug(time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds() + ' :: Connected to DCS server!');
             connOpen = false;
             buffer = "";
         });
@@ -261,14 +289,14 @@ function DCSDataRetriever(dataCallback) {
 
         client.on('close', () => {
             time = new Date();
-            console.log(time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds() + ' :: Reconnecting....');
+            rdebug(time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds() + ' :: Reconnecting....');
 			// ok we need a way to reset the data because DCS expects it to be clean if a connection is lost! so set the SERVER object list to 0 ie clean it out and wait.
 			serverObject.length = 0
             connOpen = true;
         });
 
         client.on('error', () => {
-            console.log('error!');
+            rdebug('error!');
             connOpen = true;
         });
     }
@@ -283,17 +311,17 @@ function DCSDataRetriever(dataCallback) {
 
 //API for WEB View
 app.post('/api/web/fetch', (req, res) => {
-  LOGGER.log('WEB Server Stats Requested: Sending the JSON object', i);
+  rdebug('WEB Server Stats Requested: Sending the JSON object');
   res.json(API.getJson()); //send them the data they need
 });
 
 //API for SLSC Server
 //update the database with new info
 app.post('/api/dcs/slmod/update', (req, res) => {
-  LOGGER.log('DCS Server Stats Received: "' + req.body.name + '", ID ' + req.body.id, i);
+  rdebug('DCS Server Stats Received: "' + req.body.name + '", ID ' + req.body.id);
   var err = API.update(req.body); //send it the stats and server info
   if (err) {
-    LOGGER.log(err, e);
+    rdebug(err);
     res.end('fail');
   } else { res.end('pass') }
 

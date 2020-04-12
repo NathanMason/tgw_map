@@ -170,11 +170,25 @@ MissionIntelApp.Map = function (app) {
 
                     case 'Ship':
                             if (i == 'rgb(255, 88, 88)') {
-                                return '../../assets/img/red-navy.png'
+                              if (f.getProperties().type == 'KUZNECOW')
+                              {
+                                  return '../../assets/img/red-navy.png';
+                                  break;
+                              }
+                              else {
+                                return '../../assets/img/red-snavy.png';
                                 break;
+                              }
                             } else {
+                                if (f.getProperties().type == 'Stennis')
+                                {
                                 return '../../assets/img/blue-navy.png'
                                 break;
+                              }
+                              else {
+                                return '../../assets/img/blue-snavy.png'
+                                break;
+                              }
                             }
                   default:
                     return '../../assets/img/blue-jet.png'
@@ -206,8 +220,6 @@ MissionIntelApp.Map = function (app) {
             ///////// SET MARKERS STYLE
             //////////////////////////////////////////////////////////////////////////
             console.log(f.getProperties().source);
-
-
                 // convert heading to string
                 var headingFromDCS = f.getProperties().heading;
                 var string = headingFromDCS.toString();
