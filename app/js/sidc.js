@@ -9,7 +9,7 @@ let SIDC = {
 		unitimage: 'default.jpg'
 	},
 	'AV8BNA' : {
-		icon : 'jet.png',
+		icon : 'av8.png',
 		unitimage: 'default.jpg'
 		},
 	'A-10A' : {
@@ -65,15 +65,15 @@ let SIDC = {
 		unitimage: 'default.jpg'
 		},
 	'E-3A' : {
-		icon : 'jet.png',
+		icon : 'e3.png',
 		unitimage: 'default.jpg'
 		},
 	'F-14A' : {
-		icon : 'jet.png',
+		icon : 'f14.png',
 		unitimage: 'default.jpg'
 		},
 	'F-14B' : {
-		icon : 'jet.png',
+		icon : 'f14.png',
 		unitimage: 'default.jpg'
 		},
 	'F-15C' : {
@@ -113,19 +113,19 @@ let SIDC = {
 		unitimage: 'default.jpg'
 		},
 	'F-86F Sabre' : {
-		icon : 'jet.png',
+		icon : 'saber.png',
 		unitimage: 'default.jpg'
 		},
 	'FA-18A' : {
-		icon : 'jet.png',
+		icon : 'f18.png',
 		unitimage: 'FA-18C_hornet.jpg'
 		},
 	'FA-18C' : {
-		icon : 'jet.png',
+		icon : 'f18.png',
 		unitimage: 'FA-18C_hornet.jpg'
 		},
 	'FA-18C_hornet' : {
-		icon : 'jet.png',
+		icon : 'f18.png',
 		unitimage: 'FA-18C_Hornet.jpg'
 		},
 	'FW-190D9' : {
@@ -173,7 +173,7 @@ let SIDC = {
 		unitimage: 'default.jpg'
 		},
 	'M-2000C' : {
-		icon : 'jet.png',
+		icon : 'm2000.png',
 		unitimage: 'default.jpg'
 		},
 	'MiG-15bis' : {
@@ -221,7 +221,7 @@ let SIDC = {
 		unitimage: 'default.jpg'
 		},
 	'Mirage 2000-5' : {
-		icon : 'jet.png',
+		icon : 'm2000.png',
 		unitimage: 'default.jpg'
 		},
 	'P-51D' : {
@@ -277,7 +277,7 @@ let SIDC = {
 		unitimage: 'default.jpg'
 		},
 	'JF-17' : {
-		icon : 'jet.png',
+		icon : 'jf17.png',
 		unitimage: 'default.jpg'
 		},
 	'Su-33' : {
@@ -407,127 +407,127 @@ let SIDC = {
 		},
 	// VEHICLES : IFVs
 	'AAV7' : {
-		icon : 'ground.png',
+		icon : 'apc.png',
 		unitimage: 'default.jpg'
 		},
 	'BMD-1' : {
-		icon : 'ground.png',
+		icon : 'apc.png',
 		unitimage: 'default.jpg'
 		},
 	'BMP-1' : {
-		icon : 'ground.png',
+		icon : 'apc.png',
 		unitimage: 'default.jpg'
 		},
 	'BMP-2' : {
-		icon : 'ground.png',
+		icon : 'apc.png',
 		unitimage: 'default.jpg'
 		},
 	'BMP-3' : {
-		icon : 'ground.png',
+		icon : 'apc.png',
 		unitimage: 'default.jpg'
 		},
 	'Boman' : {
-		icon : 'ground.png',
+		icon : 'apc.png',
 		unitimage: 'default.jpg'
 		},
 	'BRDM-2' : {
-		icon : 'ground.png',
+		icon : 'apc.png',
 		unitimage: 'default.jpg'
 		},
 	'BTR-80' : {
-		icon : 'ground.png',
+		icon : 'apc.png',
 		unitimage: 'default.jpg'
 		},
 	'BTR_D' : {
-		icon : 'ground.png',
+		icon : 'apc.png',
 		unitimage: 'default.jpg'
 		},
 	'Bunker' : {
-		icon : 'ground.png',
+		icon : 'apc.png',
 		unitimage: 'default.jpg'
 		},
 	'Cobra' : {
-		icon : 'ground.png',
+		icon : 'apc.png',
 		unitimage: 'default.jpg'
 		},
 	'LAV-25' : {
-		icon : 'ground.png',
+		icon : 'apc.png',
 		unitimage: 'default.jpg'
 		},
 	'M1043 HMMWV Armament' : {
-		icon : 'ground.png',
+		icon : 'apc.png',
 		unitimage: 'default.jpg'
 		},
 	'M1045 HMMWV TOW' : {
-		icon : 'ground.png',
+		icon : 'apc.png',
 		unitimage: 'default.jpg'
 		},
 	'M1126 Stryker ICV' : {
-		icon : 'ground.png',
+		icon : 'apc.png',
 		unitimage: 'default.jpg'
 		},
 	'M-113' : {
-		icon : 'ground.png',
+		icon : 'apc.png',
 		unitimage: 'default.jpg'
 		},
 	'M1134 Stryker ATGM' : {
-		icon : 'ground.png',
+		icon : 'apc.png',
 		unitimage: 'default.jpg'
 		},
 	'M-2 Bradley' : {
-		icon : 'ground.png',
+		icon : 'apc.png',
 		unitimage: 'default.jpg'
 		},
 	'Marder' : {
-		icon : 'ground.png',
+		icon : 'apc.png',
 		unitimage: 'default.jpg'
 		},
 	'MCV-80' : {
-		icon : 'ground.png',
+		icon : 'apc.png',
 		unitimage: 'default.jpg'
 		},
 	'MTLB' : {
-		icon : 'ground.png',
+		icon : 'apc.png',
 		unitimage: 'default.jpg'
 		},
 	'Paratrooper RPG-16' : {
-		icon : 'ground.png',
+		icon : 'infantry.png',
 		unitimage: 'default.jpg'
 		},
 	'Paratrooper AKS-74' : {
-		icon : 'ground.png',
+		icon : 'infantry.png',
 		unitimage: 'default.jpg'
 		},
 	'Sandbox' : {
-		icon : 'ground.png',
+		icon : 'infantry.png',
 		unitimage: 'default.jpg'
 		},
 	'Soldier AK' : {
-		icon : 'ground.png',
+		icon : 'infantry.png',
 		unitimage: 'default.jpg'
 		},
 	'Infantry AK' : {
-		icon : 'ground.png',
+		icon : 'infantry.png',
 		unitimage: 'default.jpg'
 		},
 	'Soldier M249' : {
-		icon : 'ground.png',
+		icon : 'infantry.png',
 		unitimage: 'default.jpg'
 		},
 	'Soldier M4' : {
-		icon : 'ground.png',
+		icon : 'infantry.png',
 		unitimage: 'default.jpg'
 		},
 	'Soldier M4 GRG' : {
-		icon : 'ground.png',
+		icon : 'infantry.png',
 		unitimage: 'default.jpg'
 		},
 	'Soldier RPG' : {
-		icon : 'ground.png',
+		icon : 'infantry.png',
 		unitimage: 'default.jpg'
 		},
 	'TPZ' : {
-		icon : 'ground.png',
+		icon : 'infantry.png',
 		unitimage: 'default.jpg'
 		},
 	// MBTs
